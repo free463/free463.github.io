@@ -1,0 +1,29 @@
+body {font-family: "Verdana", "Tahoma", "宋体";font-size: 12px;background-color: #FAFAFA;}
+
+A:link {FONT-SIZE: 12px; COLOR: #333333; TEXT-DECORATION: none}
+
+A:visited {FONT-SIZE: 12px; COLOR: #333333; TEXT-DECORATION: none}
+
+A:hover {FONT-SIZE: 12px; COLOR: #043B9C; TEXT-DECORATION: underline}
+
+td {font-family: "Verdana", "Tahoma", "宋体";font-size: 12px;	color: #005AB4;text-decoration: none;line-height: 140%;}
+
+.table {BORDER-RIGHT: #6188AF 1px solid; BORDER-TOP: #6188AF 1px solid; BORDER-LEFT: #6188AF 1px solid; BORDER-BOTTOM: #6188AF 1px solid}
+
+.smallfont {font-family: "Verdana", "Tahoma", "宋体";font-size: 11px;}
+
+input {
+	FONT-SIZE: 12px;
+	COLOR: #333333;
+	BACKGROUND-COLOR: #F2F2F2;
+	font-family: "Verdana", "Tahoma", "宋体";
+}
+
+select {
+	FONT-SIZE: 12px;
+	COLOR: #333333;
+	BACKGROUND-COLOR: #F2F2F2;
+	font-family: "Verdana", "Tahoma", "宋体";
+}
+.firstalt	{BACKGROUND-COLOR: #EEEEEE}
+.secondalt	{BACKGROUND-COLOR: #F7F7F7}

@@ -1,0 +1,33 @@
+BODY {
+	FONT-SIZE: 12px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif,新宋体,宋体
+}
+TD {
+	FONT-SIZE: 12px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif,新宋体,宋体
+}
+A:link {
+	COLOR: #3366cc; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #3366cc; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+INPUT.Button {
+	BORDER-RIGHT: #0069b3 1px solid; BORDER-TOP: #0069b3 1px solid; FONT-SIZE: 12px; BACKGROUND: #ffffff; BORDER-LEFT: #0069b3 1px solid; BORDER-BOTTOM: #0069b3 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif,新宋体,宋体; HEIGHT: 20px
+}
+INPUT.Textbox {
+	BORDER-RIGHT: #0069b3 1px solid; BORDER-TOP: #0069b3 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #0069b3 1px solid; BORDER-BOTTOM: #0069b3 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif,新宋体,宋体; HEIGHT: 20px
+}
+TEXTAREA.TextArea {
+	BORDER-RIGHT: #0069b3 1px solid; BORDER-TOP: #0069b3 1px solid; FONT-SIZE: 12px; SCROLLBAR-HIGHLIGHT-COLOR: #f7f7f7; BORDER-LEFT: #0069b3 1px solid; SCROLLBAR-SHADOW-COLOR: #0069b3; SCROLLBAR-3DLIGHT-COLOR: #0069b3; SCROLLBAR-ARROW-COLOR: #000000; BORDER-BOTTOM: #0069b3 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif,新宋体,宋体; SCROLLBAR-DARKSHADOW-COLOR: #f7f7f7; SCROLLBAR-BASE-COLOR: #f7f7f7
+}
+SELECT {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体
+}
+TD.title_shadow {
+	FILTER: DropShadow(Color=#000000, OffX=1, OffY=1, Positive=1)
+}

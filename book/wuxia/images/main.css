@@ -1,0 +1,175 @@
+﻿@charset "gb2312";
+::-webkit-scrollbar {width:10px;}::-webkit-scrollbar-track {background-color:#bee1eb;}::-webkit-scrollbar-thumb {background-color:#00aff0;}::-webkit-scrollbar-thumb:hover {background-color:#9c3}::-webkit-scrollbar-thumb:active {background-color:#00aff0}
+*{margin:0;padding:0;border:0;}
+body{background:#b0e4f1;height:100%;font-family:"微软雅黑",Arial;}
+a:link,a:visited,a:active{ color:#00b019; text-decoration:none; font-size:12px;star:expression(this.onFocus=this.blur());}
+a:hover{color:#f60; text-decoration:underline;font-size:12px;}a:focus {outline:0;}ul,li {list-style:none;}
+#starlist{display:none;background-color:$FFFFFF;}
+/* main start */
+#web_bg{position:absolute; width:100%; height:100%; z-index:-2;top:0;left:0;right:0;}
+#main {width:1008px;height:528px;position:absolute;top:50%;left:50%;margin: -264px 0 0 -504px;}
+.content{ width:100%; height: 100%;margin: 0 auto;overflow:hidden; position:relative}
+.content ul{ width:100%; overflow:hidden;}
+.content ul li{ width:240px; height:120px; overflow:hidden;float:left; margin:5px;_margin:4px; _display:inline; padding:1px; opacity:0.9;filter:alpha(opacity=90); position:relative;}
+.content ul li span{ display:none;}
+.content ul li span a{ color:#fff; font-family:"微软雅黑"; font-size:12px; text-decoration:none;}
+.content ul li:hover span{ text-align:center; background:#000; height:20px; line-height:20px; opacity:0.6;filter:alpha(opacity=60);display:block;font-weight:bold; position:absolute; bottom:0; left:0; width:100%;}
+.content ul li a img{  width:240px; height:120px; overflow:hidden; margin:0; padding:0; border:none;}
+.content ul li:hover{opacity:1;filter:alpha(opacity=100); padding:0px; border:1px solid #ccc;}
+#main .nextbox{width:142px;margin:10px auto 0 auto;height:12px;}
+#main .nextbox ul li{float:left;width:40px;height:10px;border:1px solid #fff;background:#227cc0;margin-left:5px; cursor:pointer}
+#main .nextbox .xuanzhong{background:#f90}
+#main .nextbox ul li:hover{background:#ccc}
+/* footer start */
+#footer{text-align: center; color:#999; font-family:"微软雅黑";font-size:13px;position: fixed;bottom: 0;left: 0;width: 100%;overflow: visible;background:#333;filter:alpha(opacity=80);opacity:0.8;padding:5px}
+#footer a{ color:#999; font-size:14px;}
+#footer a:hover{ color: #ccc;}
+/* lightbox start */
+.jquery-lightbox-overlay {
+	BACKGROUND: #000000
+}
+.jquery-lightbox {
+	POSITION: relative; PADDING-BOTTOM: 17px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 17px
+}
+.jquery-lightbox-border-top-left {
+	Z-INDEX: 7000; POSITION: absolute; WIDTH: 12%; HEIGHT: 17px
+}
+.jquery-lightbox-border-top-right {
+	Z-INDEX: 7000; POSITION: absolute; WIDTH: 12%; HEIGHT: 17px
+}
+.jquery-lightbox-border-bottom-left {
+	Z-INDEX: 7000; POSITION: absolute; WIDTH: 12%; HEIGHT: 17px
+}
+.jquery-lightbox-border-bottom-right {
+	Z-INDEX: 7000; POSITION: absolute; WIDTH: 12%; HEIGHT: 17px
+}
+.jquery-lightbox-border-top-left {
+	BACKGROUND: url(jquery-lightbox-theme.png) no-repeat 0px 0px; TOP: 0px; LEFT: 0px
+}
+.jquery-lightbox-border-top-right {
+	BACKGROUND: url(jquery-lightbox-theme.png) no-repeat right 0px; TOP: 0px; RIGHT: 0px
+}
+.jquery-lightbox-border-top-middle {
+	Z-INDEX: 7000; POSITION: absolute; WIDTH: 78%; BACKGROUND: #2b2b2b; HEIGHT: 7px; OVERFLOW: hidden; TOP: 0px; LEFT: 12%
+}
+.jquery-lightbox-border-bottom-left {
+	BOTTOM: 0px; BACKGROUND: url(jquery-lightbox-theme.png) no-repeat 0px bottom; LEFT: 0px
+}
+.jquery-lightbox-border-bottom-right {
+	BOTTOM: 0px; BACKGROUND: url(jquery-lightbox-theme.png) no-repeat right bottom; RIGHT: 0px
+}
+.jquery-lightbox-border-bottom-middle {
+	Z-INDEX: 7000; POSITION: absolute; WIDTH: 78%; BOTTOM: 0px; BACKGROUND: #2b2b2b; HEIGHT: 7px; OVERFLOW: hidden; LEFT: 12%
+}
+.jquery-lightbox-title {
+	Z-INDEX: 7000; POSITION: absolute; PADDING-BOTTOM: 5px; LINE-HEIGHT: 14px; MARGIN: 3px; PADDING-LEFT: 8px; BOTTOM: 0px; PADDING-RIGHT: 8px; FONT-FAMILY: verdana, arial, serif; BACKGROUND: #2b2b2b; COLOR: #ffffff; FONT-SIZE: 11px; PADDING-TOP: 5px; opacity: 0.9
+}
+.jquery-lightbox-html {
+	Z-INDEX: 7000; BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: #2b2b2b 7px solid; PADDING-BOTTOM: 0px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; VERTICAL-ALIGN: top; BORDER-TOP: 0px; BORDER-RIGHT: #2b2b2b 7px solid; PADDING-TOP: 0px
+}
+.jquery-lightbox-html EMBED {
+	VERTICAL-ALIGN: top
+}
+.jquery-lightbox-html OBJECT {
+	VERTICAL-ALIGN: top
+}
+.jquery-lightbox-html IFRAME {
+	VERTICAL-ALIGN: top
+}
+.jquery-lightbox-background {
+	Z-INDEX: 6999; POSITION: absolute; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: left; TOP: 7px; PADDING-TOP: 0px; LEFT: 7px
+}
+.jquery-lightbox-background IMG {
+	BORDER-BOTTOM: 0px; POSITION: relative; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; DISPLAY: block; HEIGHT: 100%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+.jquery-lightbox-mode-image .jquery-lightbox-html {
+	Z-INDEX: 6998; PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.jquery-lightbox-mode-html .jquery-lightbox-background {
+	BACKGROUND: #ffffff
+}
+.jquery-lightbox-mode-html .jquery-lightbox-html {
+	OVERFLOW: auto
+}
+.jquery-lightbox-loading {
+	BACKGROUND: url(loading.gif) #ffffff no-repeat center center
+}
+.jquery-lightbox-mode-html .jquery-lightbox-loading {
+	BACKGROUND: url(loading.gif) #ffffff no-repeat center center
+}
+.jquery-lightbox-button-close {
+	POSITION: absolute; WIDTH: 29px; BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -190px -115px; HEIGHT: 29px; TOP: 12px; RIGHT: -26px
+}
+.jquery-lightbox-button-close:hover {
+	BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -220px -115px
+}
+.jquery-lightbox-button-close SPAN {
+	DISPLAY: none
+}
+.jquery-lightbox-buttons SPAN {
+	DISPLAY: none
+}
+.jquery-lightbox-mode-image .jquery-lightbox-button-close {
+	Z-INDEX: 7002; RIGHT: 14px
+}
+.jquery-lightbox-buttons {
+	Z-INDEX: 7001; POSITION: absolute; DISPLAY: none; HEIGHT: 39px; TOP: 7px; LEFT: 7px
+}
+.jquery-lightbox-buttons .jquery-lightbox-buttons-init {
+	WIDTH: 5px; DISPLAY: inline; FLOAT: left; HEIGHT: 39px
+}
+.jquery-lightbox-buttons .jquery-lightbox-buttons-end {
+	WIDTH: 5px; DISPLAY: inline; FLOAT: left; HEIGHT: 39px
+}
+.jquery-lightbox-buttons .jquery-lightbox-buttons-init {
+	MARGIN: 7px 0px 0px 7px; BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -151px -153px
+}
+.jquery-lightbox-buttons .jquery-lightbox-buttons-end {
+	MARGIN: 7px 0px 0px; BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -244px -153px
+}
+.jquery-lightbox-buttons .jquery-lightbox-button-left {
+	MARGIN: 7px 0px 0px; WIDTH: 24px; DISPLAY: inline; BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -156px -153px; FLOAT: left; HEIGHT: 39px
+}
+.jquery-lightbox-buttons .jquery-lightbox-button-left:hover {
+	BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -156px -194px
+}
+.jquery-lightbox-buttons .jquery-lightbox-button-right {
+	MARGIN: 7px 0px 0px; WIDTH: 24px; DISPLAY: inline; BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -220px -153px; FLOAT: left; HEIGHT: 39px
+}
+.jquery-lightbox-buttons .jquery-lightbox-button-right:hover {
+	BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -220px -194px
+}
+.jquery-lightbox-buttons .jquery-lightbox-button-max {
+	MARGIN: 7px 0px 0px; WIDTH: 36px; DISPLAY: inline; BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -182px -153px; FLOAT: left; HEIGHT: 39px
+}
+.jquery-lightbox-buttons .jquery-lightbox-button-max:hover {
+	BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -182px -194px
+}
+.jquery-lightbox-buttons .jquery-lightbox-button-min {
+	MARGIN: 7px 0px 0px; WIDTH: 36px; DISPLAY: inline; BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -162px -235px; FLOAT: left; HEIGHT: 39px
+}
+.jquery-lightbox-buttons .jquery-lightbox-button-min:hover {
+	BACKGROUND: url(jquery-lightbox-theme.png) no-repeat -207px -235px
+}
+.jquery-lightbox-buttons-custom {
+	LINE-HEIGHT: 39px; MARGIN: 7px 0px 0px; DISPLAY: inline; BACKGROUND: #2b2b2b; FLOAT: left; HEIGHT: 39px; FONT-SIZE: 10px
+}
+.jquery-lightbox-buttons-custom A {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; DISPLAY: inline; COLOR: #ffffff; FONT-SIZE: 10px; FONT-WEIGHT: normal; TEXT-DECORATION: underline; PADDING-TOP: 0px
+}
+.jquery-lightbox-mode-image .jquery-lightbox-button-close {
+	opacity: 0.7
+}
+.jquery-lightbox-mode-image .jquery-lightbox-buttons {
+	opacity: 0.3
+}
+.jquery-lightbox-mode-image:hover .jquery-lightbox-buttons {
+	opacity: 0.9
+}
+.jquery-lightbox-mode-image:hover .jquery-lightbox-button-close {
+	opacity: 0.9
+}
+.jquery-lightbox-navigator {
+	DISPLAY: none
+}
+/* lightbox end */

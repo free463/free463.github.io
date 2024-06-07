@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://qingchun.660000.xyz/2022010020/ -->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<!-- Begin Jekyll SEO tag v2.8.0 --> 
+		<TITLE>{article_title} - {puttitle}</TITLE>
+<link rel="stylesheet" href="../../images/photonew/bootstrap.min.css"> 
+<link rel="stylesheet" href="../../images/photonew/main.css"> 
+<link rel="stylesheet" href="../../images/photonew/font-awesome.min.css"> 
+
+</head> 
+<body> 
+	<header class="site-header"> 
+		<nav class="navbar navbar-expand-lg navbar-light bg-transparent"> 
+			<a class="navbar-brand" href="../../">听松阁</a> 
+			<button class="navbar-toggler" type="button" data-toggle="collapse" 
+				data-target="#navbarSupportedContent" 
+				aria-controls="navbarSupportedContent" 
+				aria-expanded="false" aria-label="Toggle navigation"> 
+				<span class="navbar-toggler-icon"></span> </button> 
+					
+					
+					
+		<div class="collapse navbar-collapse" id="navbarSupportedContent" align="right"> 
+		 <table>
+		 	<tr>
+		 		<td width="200"></td>
+		 		<td>			<A  href="../../">首 页</A> | {putsort1}
+		 	 </td>
+		  </tr>
+		 </table>
+	 	</div> 
+	 	</nav> 
+	 	</header> 
+	 	
+	 	
+	 	
+	 	
+	 	<div class="container"> 
+	 		<div class="wrapper"> 
+	 			<div class="row"> 
+	 				<div class="col-md-8"> 
+	 					<article class="post" itemscope="" itemtype="http://schema.org/BlogPosting"> 
+	 						<header class="post-header"> 
+	 							<h1 class="post-title font-weight-bold" itemprop="name headline">{article_title}</h1> 
+	 							<p class="post-meta">{article_addtime}</p> 
+	 						</header> 
+	 						<div class="post-content" itemprop="articleBody"> <p>{article_title}</p> 
+	 						 <p>
+
+
+<!-- 这里是图片列表 --->
+
+					 	
+
+{article_content}
+
+
+
+<!-- 这里是图片列表 --->				 	
+	 						 </p> 
+	 						</div> 
+	 					</article> 
+</div> 
+
+<div class="col-md-4 mt20"> 
+	<div class="post-img"> 
+		<img width="600" src="{article_author}/{article_title}/000.jpg" alt="{article_title}"> </div>
+		 <div class="mt10 recent"> <h2>Recent articles</h2>
+		 	 <ul> 
+		 	 	<li> 
+		 	<p><FONT color=#000000>当前位置：</font><a href=../../><FONT color=#BCB6A0>首页</font></a> <FONT color=#BCB6A0>&gt;&gt;</font> {locality} <FONT color=#BCB6A0>&gt;&gt;</font> {article_title}</TD></p>
+		 	 </li> 
+		 	 <li> 
+		 	 	<p>文章作者:{article_author} &nbsp;&nbsp;内容来源:{article_source} &nbsp;&nbsp;发表时间:{article_addtime}&nbsp;&nbsp;文章类别:{article_sortname}></p> 
+		 	 	</li> 
+		 	 	 </ul> 
+		 	 	 </div> 
+		 	 	 
+<div class="mt10"> 
+	<div class="fb-page" data-href="https://www.facebook.com/webjeda/" data-width="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/webjeda/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/webjeda/">webjeda</a></blockquote>
+		</div> 
+</div> <br> </div> </div> 
+
+ <footer class=" mt-4 mt-md-5"> 
+ 	<div class="container"> 
+ 		
+
+ 			<div  align="center"> Copyright @ 听松阁 2021
+                    <br>
+                    Theme on <a href="https://github.com">GitHub</a> | Power by <a href="http://www.660000.xyz">听松阁</a></div> 
+
+ 	 </div> 
+ 	</div> 
+ 	
+<div ><iframe name="top" src="../../images/appleutf8/ad.html" align="MIDDLE" width="728" height="90" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></div> 
+ </footer> 
+ 
+
+
+</body>
+</html>

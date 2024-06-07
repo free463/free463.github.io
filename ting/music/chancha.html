@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>听松阁-HTML5列表式音乐播放器SMusic</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+{title:'001.禅茶一味之清莲浮生',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/001.禅茶一味之清莲浮生.mp3'},
+{title:'002.禅茶一味之云水禅心',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/002.禅茶一味之云水禅心.mp3'},
+{title:'003.禅茶一味之月色思念',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/003.禅茶一味之月色思念.mp3'},
+{title:'004.禅茶一味之玉水明砂',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/004.禅茶一味之玉水明砂.mp3'},
+{title:'005.禅茶一味之雨中问情',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/005.禅茶一味之雨中问情.mp3'},
+{title:'006.禅茶一味之燕丘之美',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/006.禅茶一味之燕丘之美.mp3'},
+{title:'007.禅茶一味之君生我未生',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/007.禅茶一味之君生我未生.mp3'},
+{title:'008.禅茶一味之雨碎江南',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/008.禅茶一味之雨碎江南.mp3'},
+{title:'009.禅茶一味之墨兰香',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/009.禅茶一味之墨兰香.mp3'},
+{title:'010.禅茶一味之埙曲千风',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/010.禅茶一味之埙曲千风.mp3'},
+{title:'011.禅茶一味之绾青丝 (埙)',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/011.禅茶一味之绾青丝 (埙).mp3'},
+{title:'012.禅茶一味之惜别离',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/012.禅茶一味之惜别离.mp3'},
+{title:'013.禅茶一味之水墨兰亭',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/013.禅茶一味之水墨兰亭.mp3'},
+{title:'014.禅茶一味之千年风雅',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/014.禅茶一味之千年风雅.mp3'},
+{title:'015.禅茶一味之空山鸟语',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/015.禅茶一味之空山鸟语.mp3'},
+{title:'016.禅茶一味之千年一叹',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/016.禅茶一味之千年一叹.mp3'},
+{title:'017.禅茶一味之苦竹林',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/017.禅茶一味之苦竹林.mp3'},
+{title:'018.禅茶一味之夏雨风荷',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/018.禅茶一味之夏雨风荷.mp3'},
+{title:'019.禅茶一味之桃花幻梦',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/019.禅茶一味之桃花幻梦.mp3'},
+{title:'020.禅茶一味之唐崎夜雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/020.禅茶一味之唐崎夜雨.mp3'},
+{title:'021.禅茶一味之随风而去',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/021.禅茶一味之随风而去.mp3'},
+{title:'022.禅茶一味之枯木寻禅',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/022.禅茶一味之枯木寻禅.mp3'},
+{title:'023.禅茶一味之自有幽香梦里通',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/023.禅茶一味之自有幽香梦里通.mp3'},
+{title:'024.禅茶一味之子规声里驻年光',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/024.禅茶一味之子规声里驻年光.mp3'},
+{title:'025.禅茶一味之桃花依旧笑春风',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/025.禅茶一味之桃花依旧笑春风.mp3'},
+{title:'026.禅茶一味之踏过樱华第几桥',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/026.禅茶一味之踏过樱华第几桥.mp3'},
+{title:'027.禅茶一味之落花风雨更伤春',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/027.禅茶一味之落花风雨更伤春.mp3'},
+{title:'028.禅茶一味之满树玲珑雪未干',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/028.禅茶一味之满树玲珑雪未干.mp3'},
+{title:'029.禅茶一味之花柳两相柔',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/029.禅茶一味之花柳两相柔.mp3'},
+{title:'030.禅茶一味之魂梦不堪幽怨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/030.禅茶一味之魂梦不堪幽怨.mp3'},
+{title:'031.禅茶一味之才有梅花便不同',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/031.禅茶一味之才有梅花便不同.mp3'},
+{title:'032.禅茶一味之远',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/032.禅茶一味之远.mp3'},
+{title:'033.禅茶一味之悟',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/033.禅茶一味之悟.mp3'},
+{title:'034.禅茶一味之听',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/034.禅茶一味之听.mp3'},
+{title:'035.禅茶一味之水',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/035.禅茶一味之水.mp3'},
+{title:'036.禅茶一味之善',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/036.禅茶一味之善.mp3'},
+{title:'037.禅茶一味之梦',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/037.禅茶一味之梦.mp3'},
+{title:'038.禅茶一味之莲',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/038.禅茶一味之莲.mp3'},
+{title:'039.禅茶一味之乐',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/039.禅茶一味之乐.mp3'},
+{title:'040.禅茶一味之归',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/040.禅茶一味之归.mp3'},
+{title:'041.禅茶一味之醒',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/041.禅茶一味之醒.mp3'}
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://free163.com/" target="_blank">听松阁</a></p>
+</div>
+</body>
+</html>

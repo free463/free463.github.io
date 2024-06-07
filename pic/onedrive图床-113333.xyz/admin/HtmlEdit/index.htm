@@ -1,0 +1,411 @@
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<TITLE>HTML编辑器</TITLE>
+<style>
+td,a,p{font-size:9pt;font-face:Tahoma,Georgia};
+.Up{border-left: 1Px solid rgb(233,244,249);
+	border-right: 1px solid rgb(12,12,12);
+	border-bottom: 1px solid rgb(12,12,12);
+	border-top: 1px solid rgb(233,244,249);
+	cursor:hand;}
+.Down{border-right: 1Px solid rgb(233,244,249);
+	border-left: 1px solid rgb(12,12,12);
+	border-top: 1px solid rgb(12,12,12);
+	border-bottom: 1px solid rgb(233,244,249);
+	cursor:hand;}
+.None{border-top: 1Px solid rgb(208,208,200);
+	border-left: 1px solid rgb(208,208,200);
+	border-bottom: 1px solid rgb(208,208,200);
+	border-right: 1px solid rgb(208,208,200);
+	cursor:hand;}
+input,select{BORDER-TOP-WIDTH: 2px; BORDER-LEFT-WIDTH: 2px; FONT-SIZE: 12px; BORDER-LEFT-COLOR: #e9e9e9; BORDER-BOTTOM-WIDTH: 2px; BORDER-BOTTOM-COLOR: #e9e9e9; COLOR: #000000; BORDER-TOP-COLOR: #e9e9e9; FONT-FAMILY: Tahoma,Georgia; BACKGROUND-COLOR: #E4E4E4; BORDER-RIGHT-WIDTH: 2px; BORDER-RIGHT-COLOR: #e9e9e9}
+</style>
+<script language="JavaScript">
+var Format = "Normal";
+var initHTML = "";
+var CssFile="";
+var edit;
+var RangeType;
+var CssFile="";
+var returnValue="";
+var save="";
+var parent_objname = location.search.substring(1,location.search.length); 
+var config = eval('opener.document.forms[0].'+parent_objname);
+function CheckOS(){      
+	if((window.navigator.userAgent.indexOf("IE 5") < 1) && (window.navigator.userAgent.indexOf("IE 6") < 1)) {
+		alert("请使用Microsoft Internet Explorer 5.0\n或更高版本的浏览器！");
+		window.close();
+	}
+}
+function setFocus() {
+   Editor.focus();
+}
+
+function fixSize(){
+	document.all.Editor.style.height = Math.max(document.body.clientHeight - document.all.Editor.offsetTop, 0);
+}
+
+function selectRange(){
+	edit = Editor.document.selection.createRange();
+	RangeType = Editor.document.selection.type;
+}
+
+function execCommand(command,para) {	
+	if(Format == "Normal"){
+		setFocus();
+		selectRange();	
+		if ((command == "Undo") || (command == "Redo"))
+			document.execCommand(command);
+		else
+			if (para=="")				
+				edit.execCommand(command);
+			else
+		  		edit.execCommand(command, false, arguments[1]);
+		Editor.focus();
+		if (RangeType != "Control") edit.select();
+	}	
+}
+function swapModes(Mode) {	
+	switch(Mode){
+		case "Normal":
+			if (Format == "Html"){
+				Editor.document.body.innerHTML = Editor.document.body.innerText;
+			}else{
+				initHTML = Editor.document.body.innerHTML;
+				initEditor("On");
+			}
+			break;	
+		case "Html":
+			if (Format == "Preview"){
+				initHTML = Editor.document.body.innerHTML;
+				initEditor("On");
+			}	
+			Editor.document.body.innerText = Editor.document.body.innerHTML;
+			break;
+		default:
+			var strHTML = "";
+			if(Format == "Html")
+				initHTML = Editor.document.body.innerText;
+			else
+				initHTML = Editor.document.body.innerHTML;				
+			initEditor("Off");
+			break;
+	}
+	Editor.focus();
+	Format=Mode;
+}
+
+function pasteMark(Mark){
+	var strHTML;
+	if (Mark=='') return(0);
+	setFocus();
+	selectRange();	
+	var t=Mark.split(" ");
+	if (Mark=="hr")
+		strHTML="<hr>"
+	else
+		strHTML = "<" + Mark + ">" + edit.text + "</" + t[0] + ">"; 
+	if (Format == "Normal")
+	 	edit.pasteHTML(strHTML);
+	else
+		edit.text=strHTML;
+	Editor.focus();
+	edit.select();			
+}
+function pasteHTML(HTML){
+	setFocus();
+	selectRange();	
+	if(Format == "Normal")
+		edit.pasteHTML(HTML);
+	else
+		edit.text=HTML;
+	Editor.focus();
+	edit.select();
+}
+function initEditor(Model) {
+	Editor.document.designMode=Model;
+	Editor.document.open();
+	Editor.document.write(initHTML);
+	Editor.document.close();
+	initHTML = "";
+	if(CssFile!="") Editor.document.createStyleSheet(CssFile);
+	Editor.document.body.style.fontFamily = "";
+	Editor.document.body.style.fontSize ="";
+}
+function Check(t,n){
+	if(n==1)
+		t.className ="Up"
+	else
+		if(n==2)	t.className ="Down"
+		else		t.className ="None"
+}
+function SelectFormat(Status){
+	swapModes(Status);
+	switch(Status){
+	case "Normal":
+		Html.style.display="none";
+		Preview.style.display="none";
+		Normal.style.display="block";
+		break;
+	case "Html":
+		Normal.style.display="none";
+		Preview.style.display="none";
+		Html.style.display="block";
+		break;
+	default:
+		Normal.style.display="none";
+		Html.style.display="none";
+		Preview.style.display="block";
+		break; 
+	}
+return(false);
+}
+ 
+function showHelp(){	
+	showModalDialog("help.htm","","dialogWidth:350px;dialogHeight:250px;status:no;");
+}
+function addTable(){
+	if(Format!="Preview"){
+		ReturnValue=window.showModalDialog("AddTable.htm","","dialogWidth=310px;dialogHeight=150px;status=0");
+		if(ReturnValue && ReturnValue!="") pasteHTML(ReturnValue);
+	} 
+}
+function doFormat(what,para,Mark){
+	if(Format!="Preview") 
+		if (Format=='Normal') execCommand(what,para);
+	else
+		pasteMark(Mark);   
+}
+function doSelectClick(str,el,Mark) {
+	if(Format!="Preview"){
+		var Index = el.selectedIndex;
+		if (Index != 0){
+			el.selectedIndex = 0;
+			if (Format=='Normal' && el.id != "OtherFormat") doFormat(str,el.options[Index].value);
+			else pasteMark(Mark);
+		}
+	}
+}
+
+function SelectColor(id){
+	var c=window.showModalDialog("SelectColor.htm",id.style.backgroundColor,"dialogWidth=420px;dialogHeight=340px;status=0");
+	if(c && c!="") id.style.backgroundColor=c;
+   
+}
+function Help(){
+	var helpmess;
+	helpmess="KingEagle.Studio";
+	alert(helpmess);
+}
+function handin(){
+	var orgMsg = config.value;
+	var EditorMsg = Editor.document.body.innerHTML;
+	config.value = EditorMsg;
+        pig();
+        save=1;
+	self.close();
+}
+function loadMsg(){
+	var orgMsg = config.value;
+	Editor.document.body.innerHTML = orgMsg;
+}
+function pig(){
+	if(opener.document.forms[0].ishtml.checked == false) {
+	if(confirm("简介内容是否要支持html"))
+	opener.document.forms[0].ishtml.checked = true;
+        }
+}
+function ttt(){
+       if(save!=1) {
+	     if(confirm("保存更改吗?")){
+	           var EditorMsg = Editor.document.body.innerHTML;
+	           config.value = EditorMsg;
+                   pig();
+             }
+       }
+}
+function Clear(){
+	Editor.document.body.innerHTML='';
+	Editor.focus();
+}
+function InsertAttach(){
+	alert("您选择了插入附件功能");
+}
+
+function InsertImage(){
+	if(Format!="Preview"&&Format!="Html") {
+		Editor.focus();
+		Html.document.execCommand('InsertImage',true)
+	}   
+}
+function Paste(){
+	if(Format!="Preview") {
+		Editor.focus();
+		Html.document.execCommand('Paste',true)
+	}   
+} 
+</script>
+</HEAD>
+<BODY SCROLL="no" bgcolor=d0d0c8 onload="initEditor('ON');loadMsg();" onUnload="ttt();" LEFTMARGIN='0' TOPMARGIN='0' MARGINWIDTH='0' MARGINHEIGHT='0'>
+<TABLE width="100%" height="100%" cellSpacing="0" cellPadding="0">
+<TR height=40>
+<TD>
+	<TABLE cellSpacing="1" cellPadding="1" WIDTH=400>  
+	<TR align=middle>  
+		<TD><IMG height=16 src='images/seperator1.gif' width=10 align=absMiddle border=0></TD>
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="粗体" onclick="doFormat('Bold','','b')"><IMG src="images/B.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="斜体" onclick="doFormat('Italic','','i')"><IMG src="images/I.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="下划线" onclick="doFormat('Underline','','u')"><IMG src="images/U.gif" width="16" height="16"></TD>
+		<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="撤销" onclick="doFormat('Undo','','')"><IMG src="images/Undo.gif" width="16" height="16"></TD>
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="恢复" onclick="doFormat('Redo','','')"><IMG src="images/Redo.gif" width="16" height="16"></TD>
+		<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="左对齐" onclick="doFormat('JustifyLeft','','p align=left')"><IMG src="images/Left.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="居中" onclick="doFormat('JustifyCenter','','p align=center')"><IMG src="images/Center.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="右对齐" onclick="doFormat('JustifyRight','','p align=right')"><IMG src="images/Right.gif" width="16" height="16"></TD>
+		<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="剪切" onclick="doFormat('Cut','','')"><IMG src="images/Cut.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="复制"  onclick="doFormat('Copy','','')"><IMG src="images/Copy.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="粘贴"  onclick="Paste()"><IMG src="images/Paste.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="删除" onclick="doFormat('Delete','','')"><IMG src="images/Delete.gif" width="16" height="16"></TD>
+		<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="插入链结" onclick="doFormat('CreateLink','','')"><IMG src="images/Link.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="插入图片" onclick="InsertImage()"><IMG src="images/Image.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="插入表格"  onclick="addTable()"><IMG src="images/table.gif" width="16" height="16"></TD>
+		<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="背景颜色" onclick="doFormat('BackColor',bkcolorimg.style.backgroundColor+'','font style=BACKGROUND-COLOR:'+bkcolorimg.style.backgroundColor)" width="18"><IMG id=bkcolorimg style="BACKGROUND-COLOR: #ffffff" src="images/colorpen.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="选择背景颜色" style="FONT-WEIGHT: normal; FONT-SIZE: 5pt" onclick="SelectColor(bkcolorimg)" width="7">▼</TD> 
+		<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD>
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="字体颜色" onclick="doFormat('ForeColor',colorimg.style.backgroundColor+'','font color='+colorimg.style.backgroundColor)" width="18"><IMG id=colorimg style="BACKGROUND-COLOR: #000000" src="images/fontcolor.gif" width="16" height="16"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="选择字体颜色" style="FONT-WEIGHT: normal; FONT-SIZE: 5pt; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal" onclick="SelectColor(colorimg)" width="7">▼</TD>
+		<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD> 
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="去除格式" onclick="doFormat('RemoveFormat','','')" width="16"><IMG src="images/unformat.gif" width="16" height="16"></TD>
+		<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD>
+		<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="全部清除" onclick="Clear();" width="16"><IMG src="images/unformat_a.gif" width="16" height="16"></TD>
+		<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD>
+	</TR>  
+	</TABLE>
+	<TABLE height=4 cellSpacing=0 cellPadding=0 width=100% background='images/seperator2.gif' border=0><TR><TD></TD></TR></TABLE>
+	<TABLE cellSpacing="1" cellPadding="1" width="400">  
+	<TR align=middle>
+	<TD><IMG height=16 src='images/seperator1.gif' width=10 align=absMiddle border=0></TD>
+	<TD width="80">
+		<select id="select1" style="width: 80; height: 20" onchange="doSelectClick('FormatBlock',this,this.value);this.returnValue=false;" name="select1" size="1"> 
+		<option selected value="">标题</option>
+		<option value="PRE">Pre
+		<option value="H1">H1
+		<option value="H2">H2
+		<option value="H3">H3
+		<option value="H4">H4
+		<option value="H5">H5
+		<option value="H6">H6
+		<option value="H7">H7
+		</select>
+	</TD>
+	<TD width="80">
+		<select style="width: 80; height: 20" onchange="doSelectClick('FontName',this,'font face=&quot'+this.value+'&quot')" name="selectFontName"size="1">
+		<option selected>字体</option>
+		<option value="Arial">Arial</option>
+		<option value="Arial Black">Arial Black</option>
+		<option value="Arial Narrow">Arial Narrow</option>
+		<option value="MS Outlook">MS Outlook</option>
+		<option value="宋体">宋体</option>
+		<option value="楷体_GB2312">楷体</option>
+		<option value="隶书">隶书</option>
+		<option value="黑体">黑体</option>
+		<option value="仿宋_GB2312">仿宋</option>
+		</select>
+	</TD>
+	<TD width="80">
+		<select style="width: 80; height: 20" onchange="doSelectClick('FontSize',this,'font size='+this.value);" name="selectFontSize" size="1">
+		<option selected>大小</option>
+		<option value="1">1
+		<option value="2">2
+		<option value="3">3
+		<option value="4">4
+		<option value="5">5
+		<option value="6">6
+		<option value="7">7</option>
+		</select>
+	</TD>
+	<TD width="80">
+		<select id="OtherFormat" style="width: 80; height: 20" onchange="doSelectClick('FormatBlock',this,this.value);this.returnValue=false;" size="1" name="selectFoontFormat">
+		<option selected>格式</option>
+		<option value="SUP">上标
+		<option value="SUB">下标
+		<option value="DEL">删除线
+		<option value="BIG">增大字体
+		<option value="SMALL">减小字体</option>
+		</select>
+	</TD>
+	<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD>
+	<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="减小缩进" onclick="doFormat('Outdent','','')" width="16"><IMG src="images/outdent.gif" width="16" height="16"></TD>
+	<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="增加缩进" onclick="doFormat('Indent','','BLOCKQUOTE')" width="16"><IMG src="images/indent.gif" width="16" height="16"></TD>
+	<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="插入水平线" onclick="doFormat('InsertHorizontalRule','','hr')" width="16" ><IMG src="images/hr.gif" width="16" height="16"></TD>
+	<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD>
+	<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="编号" onclick="doFormat('FormatBlock','<OL>','ol')" width="16"><IMG src="images/ol.gif" width="16" height="16"></TD>
+	<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="项目符号" onclick="doFormat('FormatBlock','<UL>','ul')" width="16"><IMG src="images/ul.gif" width="16" height="16"></TD>
+	<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD>
+	<TD class=None onmousedown=Check(this,2) onmouseover="Check(this,1)" onmouseout="Check(this,0)" onmouseup="Check(this,1)" title="提交保存" onclick="handin()" width="16"><IMG src="images/save.gif" width="16" height="16"></TD>
+	<TD width="4"><IMG src='images/seperator.gif' width="4" height="18"></TD>
+	</TR>
+	</TABLE>
+</TD>
+</TR>
+<TR height="100%" width="100%">
+	<TD>
+		<IFRAME id="Editor" Name="Editor" style="WIDTH: 100%; HEIGHT: 100%"></IFRAME> 
+	</TD>
+</TR>
+<TR height=15>
+<TD height=15>
+	<map name="Map">
+		<area shape="RECT" coords="51,1,92,15" onclick="return(SelectFormat('Html'));">
+		<area shape="RECT" coords="93,1,133,15" onclick="return(SelectFormat('Preview'));" >
+	</map>
+	<map name="Map2">
+		<area shape="RECT" coords="6,1,45,16" onclick="return(SelectFormat('Normal'));" >
+		<area shape="RECT" coords="93,1,133,15" onclick="return(SelectFormat('Preview'));">
+	</map>
+	<map name="Map3">
+		<area shape="RECT" coords="5,1,47,15" onclick="return(SelectFormat('Normal'));">
+		<area shape="RECT" coords="47,2,90,15" onclick="return(SelectFormat('Html'));">
+	</map>
+
+	<div ID=Normal>
+	<TABLE width="100%" border="0" cellspacing="0" cellpadding="0" height=15> 
+	<tr> 
+	<TD align="left"><IMG src="images/Normal.gif" useMap=#Map border=0 width="135" height="15"></TD>
+	<TD align="middle"><IMG src="images/ScrollL.gif" border=0 width="24" height="15"></TD>
+	<TD align="middle" width="100%" style="FILTER: Alpha(opacity=50); BACKGROUND-COLOR: white"></TD>
+	<TD align="right"><IMG src="images/ScrollR.gif" border=0 width="19" height="15"></TD>
+	</TR>
+	</TABLE>
+	</div>
+
+	<div ID=Html style="DISPLAY: none">
+	<TABLE width="100%" border="0" cellspacing="0" cellpadding="0" height=15>
+	<tr>
+	<TD align="left"><IMG src="images/Html.gif" useMap=#Map2 border=0 width="135" height="15"></TD>
+	<TD align="middle"><IMG src="images/ScrollL.gif" border=0 width="24" height="15"></TD>
+	<TD align="middle" width="100%" style="FILTER: Alpha(opacity=50); BACKGROUND-COLOR: white"></TD>
+	<TD align="right"><IMG src="images/ScrollR.gif" border=0 width="19" height="15"></TD>
+	</TR>
+	</TABLE>
+	</div> 
+	
+	<div ID=Preview style="DISPLAY: none"> 
+	<TABLE width="100%" border="0" cellspacing="0" cellpadding="0" height=15> 
+	<tr>  
+	<TD align="left"><IMG src="images/Preview.gif" useMap=#Map3 border=0 width="135" height="15"></TD>
+	<TD align="middle"><IMG src="images/ScrollL.gif" border=0 width="24" height="15"></TD>
+	<TD align="middle" width="100%" style="FILTER: Alpha(opacity=50); BACKGROUND-COLOR: white"></TD>
+	<TD align="right"><IMG src="images/ScrollR.gif" border=0 width="19" height="15"></TD>
+	</TR> 
+	</TABLE>
+	</div>
+</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

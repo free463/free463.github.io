@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>听松阁-HTML5列表式音乐播放器SMusic</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+{title : 'azu-angel.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/azu-angel.mp3'},
+{title : 'juju-この夜を止めてよ.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/juju-この夜を止めてよ.mp3'},
+{title : 'rania-DrFeelGood.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/rania-DrFeelGood.mp3'},
+{title : '中岛美嘉-雪華.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/中岛美嘉-雪華.mp3'},
+{title : '中島みゆき-容易受伤的女人原曲.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/中島みゆき-容易受伤的女人原曲.mp3'},
+{title : '初音未来-甩葱歌.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/初音未来-甩葱歌.mp3'},
+{title : '大冢爱-プラネタリウム.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/大冢爱-プラネタリウム.mp3'},
+{title : '大冢爱-桃ノ花ビラ.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/大冢爱-桃ノ花ビラ.mp3'},
+{title : '宇多田光-First_Love.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/宇多田光-First_Love.mp3'},
+{title : '宗次郎-故乡的原风景.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/宗次郎-故乡的原风景.mp3'},
+{title : '少女时代-mr taxi.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/少女时代-mr taxi.mp3'},
+{title : '少女时代-the boys.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/少女时代-the boys.mp3'},
+{title : '川嶋あい-大丈夫だよ.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/川嶋あい-大丈夫だよ.mp3'},
+{title : '日本歌曲 星の在り処.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/日本歌曲 星の在り処.mp3'},
+{title : '日本歌曲-漠然の莹.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/日本歌曲-漠然の莹.mp3'},
+{title : '滨崎步-A_Song_For_Xx.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/滨崎步-A_Song_For_Xx.mp3'},
+{title : '滨崎步-Blue_Bird.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/滨崎步-Blue_Bird.mp3'},
+{title : '滨崎步-depend_on_you.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/滨崎步-depend_on_you.mp3'},
+{title : '滨崎步-fly_high.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/滨崎步-fly_high.mp3'},
+{title : '滨崎步-M.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/滨崎步-M.mp3'},
+{title : '滨崎步-To_Be.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/滨崎步-To_Be.mp3'},
+{title : '谷村新司-いい日旅立ち.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/谷村新司-いい日旅立ち.mp3'},
+{title : '谷村新司-カノン.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/谷村新司-カノン.mp3'},
+{title : '谷村新司-君の歌.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/谷村新司-君の歌.mp3'},
+{title : '谷村新司-忘れないで.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/谷村新司-忘れないで.mp3'},
+{title : '谷村新司-昂一すばゐ.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/谷村新司-昂一すばゐ.mp3'},
+{title : '谷村新司-星.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/谷村新司-星.mp3'},
+{title : '谷村新司-睡莲.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/谷村新司-睡莲.mp3'},
+{title : '谷村新司-风姿花传.mp3',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/日本音乐/谷村新司-风姿花传.mp3'}
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://free163.com/" target="_blank">听松阁</a></p>
+</div>
+</body>
+</html>

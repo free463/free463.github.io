@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>听松阁-HTML5列表式音乐播放器SMusic</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+{title : 'MeghnaMishra-NachdiPhirA',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/MeghnaMishra-NachdiPhira.mp3'},
+{title : '阿育王插曲-AsokaTheme',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/阿育王插曲-AsokaTheme.mp3'},
+{title : '阿育王主题曲-RoshiniSe',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/阿育王主题曲-RoshiniSe.mp3'},
+{title : '印度歌曲-KaruneshPunjab',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度歌曲-KaruneshPunjab.mp3'},
+{title : '印度音乐-WadaNaTod',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-WadaNaTod.mp3'},
+{title : '印度音乐-阿育王 忧伤的笛子',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-阿育王 忧伤的笛子.mp3'},
+{title : '印度音乐-芭杜尔快来吧',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-芭杜尔快来吧.mp3'},
+{title : '印度音乐-不要不要',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-不要不要.mp3'},
+{title : '印度音乐-纯净如天簌的',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-纯净如天簌的.mp3'},
+{title : '印度音乐-大悲咒',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-大悲咒.mp3'},
+{title : '印度音乐-的士高劲歌舞曲',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-的士高劲歌舞曲.mp3'},
+{title : '印度音乐-肚皮舞 卡西卡少女之春',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-肚皮舞 卡西卡少女之春.mp3'},
+{title : '印度音乐-风情舞动',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-风情舞动.mp3'},
+{title : '印度音乐-吉米来吧',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-吉米来吧.mp3'},
+{title : '印度音乐-吉特巴舞曲踩着我的节拍跳起来吧',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-吉特巴舞曲踩着我的节拍跳起来吧.mp3'},
+{title : '印度音乐-绝对动听的印度歌曲',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-绝对动听的印度歌曲.mp3'},
+{title : '印度音乐-雷鬼',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-雷鬼.mp3'},
+{title : '印度音乐-麻吉_印度神游',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-麻吉_印度神游.mp3'},
+{title : '印度音乐-慢摇_非常舒服的节奏',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-慢摇_非常舒服的节奏.mp3'},
+{title : '印度音乐-慢摇精华舞曲_酒吧dj音乐',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-慢摇精华舞曲_酒吧dj音乐.mp3'},
+{title : '印度音乐-慢摇英文跳舞曲',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-慢摇英文跳舞曲.mp3'},
+{title : '印度音乐-迷幻音乐',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-迷幻音乐.mp3'},
+{title : '印度音乐-秘密桑巴',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-秘密桑巴.mp3'},
+{title : '印度音乐-奴里 清楚版',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-奴里 清楚版.mp3'},
+{title : '印度音乐-情字路上',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-情字路上.mp3'},
+{title : '印度音乐-热辣媚娘_恰恰',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-热辣媚娘_恰恰.mp3'},
+{title : '印度音乐-神秘国度_印度民族音乐',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-神秘国度_印度民族音乐.mp3'},
+{title : '印度音乐-天使之吻 亲嘴歌',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-天使之吻 亲嘴歌.mp3'},
+{title : '印度音乐-天使之吻_亲嘴歌_女声版',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-天使之吻_亲嘴歌_女声版.mp3'},
+{title : '印度音乐-天竺少女',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-天竺少女.mp3'},
+{title : '印度音乐-我终生爱你至死不渝',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-我终生爱你至死不渝.mp3'},
+{title : '印度音乐-妩媚撩人_巨好听的印度慢摇舞曲',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-妩媚撩人_巨好听的印度慢摇舞曲.mp3'},
+{title : '印度音乐-想要对你说爱你的人',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-想要对你说爱你的人.mp3'},
+{title : '印度音乐-一首超爽的印度舞曲',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-一首超爽的印度舞曲.mp3'},
+{title : '印度音乐-音乐心情_一首超好听的印度歌曲',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-音乐心情_一首超好听的印度歌曲.mp3'},
+{title : '印度音乐-印度魔咒_dj舞曲',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-印度魔咒_dj舞曲.mp3'},
+{title : '印度音乐-印度音乐',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-印度音乐.mp3'},
+{title : '印度音乐-印度之花',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-印度之花.mp3'},
+{title : '印度音乐-用爱对我',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/印度歌曲/印度音乐-用爱对我.mp3'}
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://free163.com/" target="_blank">听松阁</a></p>
+</div>
+</body>
+</html>

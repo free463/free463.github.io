@@ -1,0 +1,11 @@
+bg = new Array(8); 
+bg[0] = 'https://cdn.jsdelivr.cn/gh/kylehao/public@master/photopig/001.jpg' 
+bg[1] = 'https://cdn.jsdelivr.cn/gh/kylehao/public@master/photopig/002.jpg' 
+bg[2] = 'https://cdn.jsdelivr.cn/gh/kylehao/public@master/photopig/003.jpg' 
+bg[3] = 'https://cdn.jsdelivr.cn/gh/kylehao/public@master/photopig/004.jpg' 
+bg[4] = 'https://cdn.jsdelivr.cn/gh/kylehao/public@master/photopig/005.jpg' 
+bg[5] = 'https://cdn.jsdelivr.cn/gh/kylehao/public@master/photopig/006.jpg' 
+bg[6] = 'https://cdn.jsdelivr.cn/gh/kylehao/public@master/photopig/007.jpg' 
+bg[7] = 'https://cdn.jsdelivr.cn/gh/kylehao/public@master/photopig/008.jpg' 
+index = Math.floor(Math.random() * bg.length);
+document.write("<img src="+bg[index]+">");

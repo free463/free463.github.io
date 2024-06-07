@@ -1,0 +1,106 @@
+<html>
+<head>
+<meta NAME="GENERATOR" Content="Microsoft FrontPage 4.0">
+<title>选择色彩值</title>
+<style>td,a,p,input,select{font-size:9pt};
+td.s{cursor:hand}
+</style>
+<script>
+
+var c=new Array("00","20","40","60","80","A0","C0","FF");
+var b=new Array("00","80","C0","FF");
+
+
+function ColorTable()
+{ var n,color,i,j,k;
+  document.write("<table border=1 width=280>");
+  n=1;
+  for(i=3;i>=0;i--)
+    for(j=7;j>=0;j--)
+      for(k=7;k>=0;k--,n++)
+         { color="#" +b[i]+c[j]+c[k];
+           if( (n-1) % 16==0) document.write("<tr height=16>");
+           document.write("<td bgcolor='" +color+"' class=s width=16 onclick='ClickSelColor(\"" +color+ "\");'></td>");
+           if(n%16==0) document.write("</tr>");
+         }  
+  document.write("</table>");    
+}
+
+function ClickColor(c)
+ {
+  CurColor.style.backgroundColor=c; 
+  CurColorName.innerText=c;
+ }
+function ClickSelColor(c)
+ {
+  CurSelColor.style.backgroundColor=c; 
+  CurSelColorName.innerText=c;
+ }
+ 
+function ClickCancel()
+{ window.returnValue="";
+  window.close();
+}
+
+function ClickOk()
+{
+  window.returnValue=CurSelColorName.innerText;
+  window.close();
+}   
+function Init()
+{
+ if (window.dialogArguments)
+    { ClickColor(window.dialogArguments);
+      ClickSelColor(window.dialogArguments);
+     } 
+ else
+     { ClickColor("#F0F0F0");  
+       ClickSelColor("#F0F0F0");
+     }  
+}  
+</script>
+</head>
+<body bgcolor="#d0d0c8" onload="Init();" topmargin=10 leftmargin=10>
+  <table border="0" align=right height="192" cellspacing="0" cellpadding="0" width=390>
+    <tr>
+      <td rowspan="2" height="186" width=290 valign="top">
+        <script>
+          ColorTable();
+        </script>
+      </td>
+      <td width="4" rowspan="2" height="186" valign="top" background="../HTMLEditor/Images/Separator.gif">　</td>
+      <td width="100" valign="top" align=center height="50">
+        <table border="0" >
+          <tr>
+            <td>
+        <input type="button" value="确定" name="bntOK" style="width: 80; height: 21" onclick="ClickOk();"></td>
+          </tr>
+          <tr>
+            <td>
+        <input type="button" value="取消" name="bntCancel" style="width: 80; height: 21" onclick="ClickCancel();"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="100" align="center" valign="bottom">
+       选中色彩
+        <table border="1" width="80" cellspacing height="70">
+          <tr>
+            <td width="100%" ID="CurSelColor">　</td>
+          </tr>
+        </table>
+        <div ID="CurSelColorName">#C0C0D8</div>
+        <br>
+         
+         当前色彩
+        <table border="1" width="80" cellspacing height="70">
+          <tr>
+            <td width="100%" ID="CurColor">　</td>
+          </tr>
+        </table>
+        <div ID="CurColorName">#C0C0D8</div></td>
+    </tr>
+  </table>
+</body>
+</html>

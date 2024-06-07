@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>听松阁-HTML5列表式音乐播放器SMusic</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+{title:'001.原创纯音乐-云雾荡尽的天空',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/001.原创纯音乐-云雾荡尽的天空.mp3'},
+{title:'002.原创纯音乐-如歌的瞬间',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/002.原创纯音乐-如歌的瞬间.mp3'},
+{title:'003.原创纯音乐-原乡绿叶舒展时（钢琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/003.原创纯音乐-原乡绿叶舒展时（钢琴版）.mp3'},
+{title:'004.原创纯音乐-放空心绪的时刻（钢琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/004.原创纯音乐-放空心绪的时刻（钢琴版）.mp3'},
+{title:'005.原创纯音乐-心安处静观潮汐（竖琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/005.原创纯音乐-心安处静观潮汐（竖琴版）.mp3'},
+{title:'006.原创纯音乐-春日采摘花一朵',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/006.原创纯音乐-春日采摘花一朵.mp3'},
+{title:'007.原创纯音乐-夜的遐想录4',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/007.原创纯音乐-夜的遐想录4.mp3'},
+{title:'008.原创纯音乐-一滴水落入海洋（竖琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/008.原创纯音乐-一滴水落入海洋（竖琴版）.mp3'},
+{title:'009.原创纯音乐-倾听内心的指引',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/009.原创纯音乐-倾听内心的指引.mp3'},
+{title:'010.原创纯音乐-夕光下的雏菊（竖琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/010.原创纯音乐-夕光下的雏菊（竖琴版）.mp3'},
+{title:'011.原创纯音乐-穿行于有情山水间',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/011.原创纯音乐-穿行于有情山水间.mp3'},
+{title:'012.原创纯音乐-乡间小路散漫的写意',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/012.原创纯音乐-乡间小路散漫的写意.mp3'},
+{title:'013.原创纯音乐-宁静心田的愉悦',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/013.原创纯音乐-宁静心田的愉悦.mp3'},
+{title:'014.原创纯音乐-漫步闲听海的呼吸',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/014.原创纯音乐-漫步闲听海的呼吸.mp3'},
+{title:'015.原创纯音乐-悠然照进心里的光亮',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/015.原创纯音乐-悠然照进心里的光亮.mp3'},
+{title:'016.原创纯音乐-四月的山林草木',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/016.原创纯音乐-四月的山林草木.mp3'},
+{title:'017.原创纯音乐-原乡绿叶舒展时',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/017.原创纯音乐-原乡绿叶舒展时.mp3'},
+{title:'018.原创纯音乐-回眸莲花盛开时（钢琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/018.原创纯音乐-回眸莲花盛开时（钢琴版）.mp3'},
+{title:'019.原创纯音乐-午后的河边漫步',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/019.原创纯音乐-午后的河边漫步.mp3'},
+{title:'020.原创纯音乐-漫步走入心灵的花园（钢琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/020.原创纯音乐-漫步走入心灵的花园（钢琴版）.mp3'},
+{title:'021.原创纯音乐-夜的遐想录3',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/021.原创纯音乐-夜的遐想录3.mp3'},
+{title:'022.原创纯音乐-山顶上的白云',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/022.原创纯音乐-山顶上的白云.mp3'},
+{title:'023.原创纯音乐-夜的遐想录2',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/023.原创纯音乐-夜的遐想录2.mp3'},
+{title:'024.原创纯音乐-夜的遐想录',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/024.原创纯音乐-夜的遐想录.mp3'},
+{title:'025.原创纯音乐-放空心绪的时刻',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/025.原创纯音乐-放空心绪的时刻.mp3'},
+{title:'026.原创纯音乐-夕光下的雏菊',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/026.原创纯音乐-夕光下的雏菊.mp3'},
+{title:'027.原创纯音乐-安心闲适的旅程（竖琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/027.原创纯音乐-安心闲适的旅程（竖琴版）.mp3'},
+{title:'028.原创纯音乐-安心闲适的旅程',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/028.原创纯音乐-安心闲适的旅程.mp3'},
+{title:'029.原创纯音乐-走在群山的怀抱中(钢琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/029.原创纯音乐-走在群山的怀抱中(钢琴版）.mp3'},
+{title:'030.原创纯音乐-和童年相遇的午后',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/030.原创纯音乐-和童年相遇的午后.mp3'},
+{title:'031.原创纯音乐-轻盈如微风的心情',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/031.原创纯音乐-轻盈如微风的心情.mp3'},
+{title:'032.原创纯音乐-通向花园的小路',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/032.原创纯音乐-通向花园的小路.mp3'},
+{title:'033.原创纯音乐-雨后的林中漫步',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/033.原创纯音乐-雨后的林中漫步.mp3'},
+{title:'034.原创纯音乐-走在群山的怀抱中',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/034.原创纯音乐-走在群山的怀抱中.mp3'},
+{title:'035.原创纯音乐-回眸莲花盛开时',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/035.原创纯音乐-回眸莲花盛开时.mp3'},
+{title:'036.原创纯音乐-重返纯真之境（钢琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/036.原创纯音乐-重返纯真之境（钢琴版）.mp3'},
+{title:'037.原创纯音乐-安静而缓慢的时光',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/037.原创纯音乐-安静而缓慢的时光.mp3'},
+{title:'038.原创纯音乐-心安处静观潮汐',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/038.原创纯音乐-心安处静观潮汐.mp3'},
+{title:'039.原创纯音乐-又见故乡的炊烟',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/039.原创纯音乐-又见故乡的炊烟.mp3'},
+{title:'040.原创纯音乐-在清澈的泉水边',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/040.原创纯音乐-在清澈的泉水边.mp3'},
+{title:'041.原创纯音乐-漫步走入心灵的花园',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/041.原创纯音乐-漫步走入心灵的花园.mp3'},
+{title:'042.原创纯音乐-徜徉在自然深处（竖琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/042.原创纯音乐-徜徉在自然深处（竖琴版）.mp3'},
+{title:'043.原创纯音乐-清凉泉水流去烦忧',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/043.原创纯音乐-清凉泉水流去烦忧.mp3'},
+{title:'044.原创纯音乐-山风静默风吹月（竖琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/044.原创纯音乐-山风静默风吹月（竖琴版）.mp3'},
+{title:'045.原创纯音乐-悠远的山居时光',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/045.原创纯音乐-悠远的山居时光.mp3'},
+{title:'046.原创纯音乐-小雨后的宁静（竖琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/046.原创纯音乐-小雨后的宁静（竖琴版）.mp3'},
+{title:'047.原创纯音乐-远山静默风吹月',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/047.原创纯音乐-远山静默风吹月.mp3'},
+{title:'048.原创纯音乐-天光云影的黄昏（纯钢琴版）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/048.原创纯音乐-天光云影的黄昏（纯钢琴版）.mp3'},
+{title:'049.原创纯音乐-空谷夜音幽兰生',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/049.原创纯音乐-空谷夜音幽兰生.mp3'},
+{title:'050.原创纯音乐-徜徉在自然深处',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/050.原创纯音乐-徜徉在自然深处.mp3'},
+{title:'051.原创纯音乐-清音流淌入心湖',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/051.原创纯音乐-清音流淌入心湖.mp3'},
+{title:'052.原创纯音乐-闲来无事好时节',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/052.原创纯音乐-闲来无事好时节.mp3'},
+{title:'053.原创纯音乐-当微风吹过发梢',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/053.原创纯音乐-当微风吹过发梢.mp3'},
+{title:'054.原创纯音乐-走入温和的良夜',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/054.原创纯音乐-走入温和的良夜.mp3'},
+{title:'055.原创纯音乐-小雨后的宁静',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/055.原创纯音乐-小雨后的宁静.mp3'},
+{title:'056.原创纯音乐-落花随流水飘远',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/056.原创纯音乐-落花随流水飘远.mp3'},
+{title:'057.原创纯音乐-山中月光分外明',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/057.原创纯音乐-山中月光分外明.mp3'},
+{title:'058.原创纯音乐-遥远的星河',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/058.原创纯音乐-遥远的星河.mp3'},
+{title:'059.原创纯音乐-星光洒落梦田',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/059.原创纯音乐-星光洒落梦田.mp3'},
+{title:'060.原创纯音乐-天光云影的黄昏',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/060.原创纯音乐-天光云影的黄昏.mp3'},
+{title:'061.原创纯音乐-细雨敲窗渐入梦',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/061.原创纯音乐-细雨敲窗渐入梦.mp3'},
+{title:'062.原创纯音乐-天高云淡映我心',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/062.原创纯音乐-天高云淡映我心.mp3'},
+{title:'063.原创纯音乐-春来悠然见花开',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/063.原创纯音乐-春来悠然见花开.mp3'},
+{title:'064.原创纯音乐-又见故乡的炊烟（二）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/064.原创纯音乐-又见故乡的炊烟（二）.mp3'},
+{title:'065.原创纯音乐-月光朗照清泉流',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然疗愈纯音乐/065.原创纯音乐-月光朗照清泉流.mp3'},
+{title:'066.原创纯音乐-梦里西湖泛涟漪',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/066.原创纯音乐-梦里西湖泛涟漪.mp3'},
+{title:'067.原创纯音乐-一滴水落入海洋',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/067.原创纯音乐-一滴水落入海洋.mp3'},
+{title:'068.原创轻音乐-静谧的蓝色星球',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/068.原创轻音乐-静谧的蓝色星球.mp3'},
+{title:'069.原创纯音乐-云雾荡尽的天空（二）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/069.原创纯音乐-云雾荡尽的天空（二）.mp3'},
+{title:'070.原创纯音乐-在鸟鸣处翩然起舞',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/070.原创纯音乐-在鸟鸣处翩然起舞.mp3'},
+{title:'071.原创纯音乐-流光中的似水往事',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/071.原创纯音乐-流光中的似水往事.mp3'},
+{title:'072.原创纯音乐-重返纯真之境',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/禅茶一味古风唯美纯音乐/072.原创纯音乐-重返纯真之境.mp3'}
+
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://free163.com/" target="_blank">听松阁</a></p>
+</div>
+</body>
+</html>

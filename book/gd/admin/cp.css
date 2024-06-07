@@ -1,0 +1,66 @@
+BODY {
+	BACKGROUND-COLOR: #BBBBBB; 
+	COLOR: #3F3849; 
+	line-height: 140%;
+	font-family: "Verdana", "Tahoma", "宋体";
+	FONT-SIZE: 12px;
+	SCROLLBAR-ARROW-COLOR: #F5D300;
+	SCROLLBAR-BASE-COLOR:  #40364d;
+	SCROLLBAR-HIGHLIGHT-COLOR: #90869E;
+}
+
+UL		{FONT-FAMILY: "Verdana", "Tahoma", "宋体"; FONT-SIZE: 12px}
+LI		{FONT-FAMILY: "Verdana", "Tahoma", "宋体"; FONT-SIZE: 12px}
+P		{FONT-FAMILY: "Verdana", "Tahoma", "宋体"; FONT-SIZE: 12px}
+TD		{FONT-FAMILY: "Verdana", "Tahoma", "宋体"; FONT-SIZE: 12px}
+TR		{FONT-FAMILY: "Verdana", "Tahoma", "宋体"; FONT-SIZE: 12px}
+
+A:LINK		{COLOR: #3F3849; TEXT-DECORATION: none}
+A:VISITED	{COLOR: #3F3849; TEXT-DECORATION: none}
+A:HOVER		{COLOR: #F5D300; BACKGROUND-COLOR: #40364d}
+A:ACTIVE	{COLOR: #F5D300; BACKGROUND-COLOR: #40364d}
+
+FORM		{border-width:1;FONT-FAMILY: "Verdana", "Tahoma", "宋体"; FONT-SIZE: 12px}
+SELECT		{border-width:1;FONT-FAMILY: "Verdana", "Tahoma", "宋体"; COLOR: #51485F; FONT-SIZE: 12px}
+INPUT		{border-width:1;FONT-FAMILY: "Verdana", "Tahoma", "宋体"; COLOR: #51485F; FONT-SIZE: 12px}
+BUTTON		{border-width:1;FONT-FAMILY: "Verdana", "Tahoma", "宋体"; COLOR: #51485F; FONT-SIZE: 12px}
+TEXTAREA	{border-width:1;FONT-FAMILY: "Verdana", "Tahoma", "宋体"; COLOR: #51485F; FONT-SIZE: 12px}
+
+#submitrow INPUT	{border-width:1;BACKGROUND-COLOR:#40364d; COLOR: #f5d300; FONT-WEIGHT: bold}
+.firstalt	{BACKGROUND-COLOR: #D0D0D0}
+.secondalt	{BACKGROUND-COLOR: #C5C5C5}
+.tblhead	{BACKGROUND-COLOR: #40364D; COLOR:#F5D300; FONT-SIZE:12px;}
+.tblborder	{BACKGROUND-COLOR: #51485F}
+
+#navbody 		{COLOR: #3F3849; FONT-FAMILY: "Verdana", "Tahoma", "宋体"; FONT-SIZE: 12px; BACKGROUND-COLOR: #51485F}
+#navbody TD 	{FONT-FAMILY: "Verdana", "Tahoma", "宋体"; FONT-SIZE: 12px}
+#navbody A:LINK	{COLOR: #9A91AA; FONT-FAMILY: "Verdana", "Tahoma", "宋体"; FONT-SIZE: 12px}
+#navbody A:VISITED	{COLOR: #9A91AA; FONT-FAMILY: "Verdana", "Tahoma", "宋体"}
+#navbody A:HOVER	{COLOR: #F5D300; FONT-FAMILY: "Verdana", "Tahoma", "宋体"; BACKGROUND-COLOR: #40364d}
+#navbody A:ACTIVE	{COLOR: #F5D300; FONT-FAMILY: "Verdana", "Tahoma", "宋体"; BACKGROUND-COLOR: #40364d}
+#navbody .tblhead	{COLOR: #BCB6CD; FONT-FAMILY: "Verdana", "Tahoma", "宋体"}
+
+.gc		{COLOR: darkgreen}
+.cc		{COLOR: darkblue}
+
+.size1		{FONT-SIZE: 12px}
+.size2		{FONT-SIZE: 11pt} 
+.space{
+	PADDING-TOP: 4px; 
+	PADDING-BOTTOM: 2px; 
+	PADDING-LEFT: 3px; 
+	MARGIN-TOP: 2px; 
+	MARGIN-BOTTOM: 2px
+	MARGIN-LEFT: 5px
+}       
+.saveHistory {behavior:url(#default#savehistory);}
+.menu{
+	PADDING-TOP: 2px; 
+	PADDING-BOTTOM: 1px; 
+	PADDING-LEFT: 4px; 
+	MARGIN-TOP: 2px; 
+	MARGIN-BOTTOM: 2px
+	MARGIN-LEFT: 5px
+
+}      
+.index  {border-width:1;BACKGROUND-COLOR:#999999; FONT-WEIGHT: bold}

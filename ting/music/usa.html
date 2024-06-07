@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>听松阁-HTML5列表式音乐播放器SMusic</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+{title : 'adaro-Es_Ist_Ein_Schnee_Gefallen',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/adaro-Es_Ist_Ein_Schnee_Gefallen.mp3'},
+{title : 'AdeleRolling in the Deep(Explicit)',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AdeleRolling in the Deep(Explicit).mp3'},
+{title : 'Alan WalkerAlone',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Alan WalkerAlone.mp3'},
+{title : 'Alan WalkerFaded',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Alan WalkerFaded.mp3'},
+{title : 'AmyDiamond-Heartbeats',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AmyDiamond-Heartbeats.mp3'},
+{title : 'Ann WinsbornLa La Love On My Mind',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Ann WinsbornLa La Love On My Mind.mp3'},
+{title : 'AquaMy Oh My',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AquaMy Oh My.mp3'},
+{title : 'AtlantaRhythmSection-DoItOrDie',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AtlantaRhythmSection-DoItOrDie.mp3'},
+{title : 'Ava MaxSalt',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Ava MaxSalt.mp3'},
+{title : 'AvrilLavigne-17',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-17.mp3'},
+{title : 'AvrilLavigne-4Real',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-4Real.mp3'},
+{title : 'AvrilLavigne-Alice',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-Alice.mp3'},
+{title : 'AvrilLavigne-Complicated',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-Complicated.mp3'},
+{title : 'AvrilLavigne-EverybodyHurts',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-EverybodyHurts.mp3'},
+{title : 'AvrilLavigne-Fly',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-Fly.mp3'},
+{title : 'AvrilLavigne-GiveYouWhatYouLike',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-GiveYouWhatYouLike.mp3'},
+{title : 'AvrilLavigne-HeresToNeverGrowingUp(Explicit)',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-HeresToNeverGrowingUp(Explicit).mp3'},
+{title : 'AvrilLavigne-HowYouRemindMe',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-HowYouRemindMe.mp3'},
+{title : 'AvrilLavigne-IamWithYou',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-IamWithYou.mp3'},
+{title : 'AvrilLavigne-Innocence',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-Innocence.mp3'},
+{title : 'AvrilLavigne-NobodysHome',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-NobodysHome.mp3'},
+{title : 'AvrilLavigne-RocknRoll',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-RocknRoll.mp3'},
+{title : 'AvrilLavigne-WishYouWereHere',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/AvrilLavigne-WishYouWereHere.mp3'},
+{title : 'Backstreet BoysEverybody',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Backstreet BoysEverybody.mp3'},
+{title : 'Backstreet Boysi want it that way',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Backstreet Boysi want it that way.mp3'},
+{title : 'BackstreetBoys-As_Long_As_You_Love_M',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/BackstreetBoys-As_Long_As_You_Love_M.mp3'},
+{title : 'BertieHiggins-Casablanca',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/BertieHiggins-Casablanca.mp3'},
+{title : 'BertieHiggins-KeyLargo',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/BertieHiggins-KeyLargo.mp3'},
+{title : 'BrunoMars-MarryYou',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/BrunoMars-MarryYou.mp3'},
+{title : 'CaraDillon-Craigie_Hill',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/CaraDillon-Craigie_Hill.mp3'},
+{title : 'ChrisMedina-WhatAreWords',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/ChrisMedina-WhatAreWords.mp3'},
+{title : 'ColdplayYellow',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/ColdplayYellow.mp3'},
+{title : 'Daniel PowterFree Loop',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Daniel PowterFree Loop.mp3'},
+{title : 'DemiLovato-LetItGo',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/DemiLovato-LetItGo.mp3'},
+{title : 'djokawari-luv_letter',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/djokawari-luv_letter.mp3'},
+{title : 'EdSheeran-ShapeOfYou',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/EdSheeran-ShapeOfYou.mp3'},
+{title : 'emilia-big_big_world',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/emilia-big_big_world.mp3'},
+{title : 'Eminem、Rihanna-LoveTheWayYouLie',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Eminem、Rihanna-LoveTheWayYouLie.mp3'},
+{title : 'Enya-May It Be',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Enya-May It Be.mp3'},
+{title : 'enya-Only_Time',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/enya-Only_Time.mp3'},
+{title : 'EraThe Mass',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/EraThe Mass.mp3'},
+{title : 'Gabriel MarianIts My Life',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Gabriel MarianIts My Life.mp3'},
+{title : 'GrooveCoverage-farAwayFromHome ',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/GrooveCoverage-farAwayFromHome .mp3'},
+{title : 'GrooveCoverage-GodIsaGirl ',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/GrooveCoverage-GodIsaGirl .mp3'},
+{title : 'Hawk Nelson、Jonathan SteingardSold Out',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Hawk Nelson、Jonathan SteingardSold Out.mp3'},
+{title : 'hayleyWestenra-never say goodbye',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/hayleyWestenra-never say goodbye.mp3'},
+{title : 'Justin Bieber、Luis Fonsi、Daddy Yankee-Despacito(Remix)',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Justin Bieber、Luis Fonsi、Daddy Yankee-Despacito(Remix).mp3'},
+{title : 'JustinBieber-Baby',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/JustinBieber-Baby.mp3'},
+{title : 'Kelly ClarksonCatch My Breath',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Kelly ClarksonCatch My Breath.mp3'},
+{title : 'Klymaxx-IMissYou',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Klymaxx-IMissYou.mp3'},
+{title : 'Ladygaga-Poker Face',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Ladygaga-Poker Face.mp3'},
+{title : 'Lenka-TheShow',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Lenka-TheShow.mp3'},
+{title : 'Lenka-TroubleIsaFriend',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Lenka-TroubleIsaFriend.mp3'},
+{title : 'LeoSayer-MoreThanICanSay',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/LeoSayer-MoreThanICanSay.mp3'},
+{title : 'LionelRichie-SayYouSayMe',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/LionelRichie-SayYouSayMe.mp3'},
+{title : 'LovestonedBye Bye Bye',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/LovestonedBye Bye Bye.mp3'},
+{title : 'Luis Fonsi-Despacito',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Luis Fonsi-Despacito.mp3'},
+{title : 'M2MPretty Boy',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/M2MPretty Boy.mp3'},
+{title : 'M2MThe Day You Went Away',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/M2MThe Day You Went Away.mp3'},
+{title : 'MariaArredondo-Burning',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/MariaArredondo-Burning.mp3'},
+{title : 'MariahCarey-when you believe',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/MariahCarey-when you believe.mp3'},
+{title : 'MariahCarey-withoutyou',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/MariahCarey-withoutyou.mp3'},
+{title : 'Meg MyersRunning Up That Hill',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Meg MyersRunning Up That Hill.mp3'},
+{title : 'Michael JacksonYou Are Not Alone',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Michael JacksonYou Are Not Alone.mp3'},
+{title : 'MinnieRiperton-loving you',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/MinnieRiperton-loving you.mp3'},
+{title : 'MinnieRiperton-LovingYou',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/MinnieRiperton-LovingYou.mp3'},
+{title : 'nana-lonely',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/nana-lonely.mp3'},
+{title : 'Nu VirgosStop!StopStop',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Nu VirgosStop!StopStop.mp3'},
+{title : 'Olly MursThat Girl',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Olly MursThat Girl.mp3'},
+{title : 'OnlyTime',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/OnlyTime.mp3'},
+{title : 'Rachel PlattenLone Ranger',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Rachel PlattenLone Ranger.mp3'},
+{title : 'Robbie WilliamsBetter Man',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Robbie WilliamsBetter Man.mp3'},
+{title : 'sarahBrightman-斯卡布罗集市',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/sarahBrightman-斯卡布罗集市.mp3'},
+{title : 'SarahConnor-EveryMomentOfMyLife',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/SarahConnor-EveryMomentOfMyLife.mp3'},
+{title : 'SarahCoonor',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/SarahCoonor.mp3'},
+{title : 'SarahCoonor-Are You Ready To Ride',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/SarahCoonor-Are You Ready To Ride.mp3'},
+{title : 'SarahCoonor-color',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/SarahCoonor-color.mp3'},
+{title : 'SarahCoonor-From_Sarah_With_Love',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/SarahCoonor-From_Sarah_With_Love.mp3'},
+{title : 'SarahCoonor-just one last dance',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/SarahCoonor-just one last dance.mp3'},
+{title : 'Sasha Alex SloanDancing With Your Ghost',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Sasha Alex SloanDancing With Your Ghost.mp3'},
+{title : 'Savage GardenTruly Madly Deeply',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Savage GardenTruly Madly Deeply.mp3'},
+{title : 'ShakinStevens-BecauseILoveYou',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/ShakinStevens-BecauseILoveYou.mp3'},
+{title : 'SiaMove Your Body(Alan Walker Remix)',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/SiaMove Your Body(Alan Walker Remix).mp3'},
+{title : 'SiaUnstoppable',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/SiaUnstoppable.mp3'},
+{title : 'Sting-ShapeOfMyHeart ',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Sting-ShapeOfMyHeart .mp3'},
+{title : 'tatu-30_Minutes',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/tatu-30_Minutes.mp3'},
+{title : 'Taylor SwiftLove Story',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Taylor SwiftLove Story.mp3'},
+{title : 'TrademarkOnly Love',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/TrademarkOnly Love.mp3'},
+{title : 'Vicetone、Meron RyanWalk Thru Fire',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Vicetone、Meron RyanWalk Thru Fire.mp3'},
+{title : 'WestlifeMy Love',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/WestlifeMy Love.mp3'},
+{title : 'WhitneyHouston-CallYouTonight',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/WhitneyHouston-CallYouTonight.mp3'},
+{title : 'WhitneyHouston-IHaveNothing',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/WhitneyHouston-IHaveNothing.mp3'},
+{title : 'WhitneyHouston-IWillAlwaysLoveYou',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/WhitneyHouston-IWillAlwaysLoveYou.mp3'},
+{title : 'Wiz Khalifa、Charlie PuthSee You Again (feat. Charlie Puth)',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/Wiz Khalifa、Charlie PuthSee You Again (feat. Charlie Puth).mp3'},
+{title : 'WizKhalifa-See You Again',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/WizKhalifa-See You Again.mp3'},
+{title : '布兰妮-BabyOneMoreTime',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/布兰妮-BabyOneMoreTime.mp3'},
+{title : '布兰妮-everytime',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/布兰妮-everytime.mp3'},
+{title : '卡洛儿-假如爱有天意',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/卡洛儿-假如爱有天意.mp3'},
+{title : '卡洛儿-写给海洋',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/卡洛儿-写给海洋.mp3'},
+{title : '卡朋特-YesterdayOnceMore',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/卡朋特-YesterdayOnceMore.mp3'},
+{title : '马克尔杰克逊-HealTheWorld',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/马克尔杰克逊-HealTheWorld.mp3'},
+{title : '欧美群星-WeAreTheWorld',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/欧美群星-WeAreTheWorld.mp3'},
+{title : '手嶌葵-the rose',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/手嶌葵-the rose.mp3'},
+{title : '斯维特拉娜 斯维吉科娃-天使消逝的地方',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/斯维特拉娜 斯维吉科娃-天使消逝的地方.mp3'},
+{title : '铁达尼号主题曲-MyHeartWillGoOn',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/铁达尼号主题曲-MyHeartWillGoOn.mp3'},
+{title : '维塔斯-海豚音',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/维塔斯-海豚音.mp3'},
+{title : '英文经典-我的名字叫伊莲',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/英文经典-我的名字叫伊莲.mp3'},
+{title : '有里知花-I_Cry',singer:'',cover :'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/欧美音乐/有里知花-I_Cry.mp3'}
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://free163.com/" target="_blank">听松阁</a></p>
+</div>
+</body>
+</html>

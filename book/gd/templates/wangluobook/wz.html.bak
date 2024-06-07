@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://qingchun.660000.xyz/2022010020/ -->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<!-- Begin Jekyll SEO tag v2.8.0 --> 
+		<TITLE>{article_title} - {puttitle}</TITLE>
+<link rel="stylesheet" href="../../images/bootstrap.min.css"> 
+<link rel="stylesheet" href="../../images/main.css"> 
+<link rel="stylesheet" href="../../images/font-awesome.min.css"> 
+
+</head> 
+<body> 
+	<header class="site-header"> 
+		<nav class="navbar navbar-expand-lg navbar-light bg-transparent"> 
+			<a class="navbar-brand" href="http://qingchun.660000.xyz/">听松阁</a> 
+			<button class="navbar-toggler" type="button" data-toggle="collapse" 
+				data-target="#navbarSupportedContent" 
+				aria-controls="navbarSupportedContent" 
+				aria-expanded="false" aria-label="Toggle navigation"> 
+				<span class="navbar-toggler-icon"></span> </button> 
+					
+					
+					
+		<div class="collapse navbar-collapse" id="navbarSupportedContent"> 
+			<ul class="navbar-nav ml-auto"> 
+			<li class="nav-item active"> 
+				<a class="nav-link" href="../../">Home <span class="sr-only">(current)</span></a> </li> 
+      <li class="nav-item"> 
+			 <a class="nav-link" href="http://332222.xyz">Link</a> </li> 
+	 	<li class="nav-item"> <a class="nav-link disabled" href="../../images/saved_resource">Disabled</a> </li> 
+	 	</ul> 
+	 	</div> 
+	 	</nav> 
+	 	</header> 
+	 	
+	 	
+	 	
+	 	
+	 	<div class="container"> 
+	 		<div class="wrapper"> 
+	 			<div class="row"> 
+	 				<div class="col-md-8"> 
+	 					<article class="post" itemscope="" itemtype="http://schema.org/BlogPosting"> 
+	 						<header class="post-header"> 
+	 							<h1 class="post-title font-weight-bold" itemprop="name headline">{article_title}</h1> 
+	 							<p class="post-meta">{article_addtime}</p> 
+	 						</header> 
+	 						<div class="post-content" itemprop="articleBody"> <p>{article_title}</p> 
+	 						 <p>
+
+
+<!-- 这里是图片列表 --->
+
+<!--
+	 						 	<img src="../../images/001.jpg" alt=""> <br> <img src="../../images/002.jpg" alt=""> <br> <img src="../../images/003.jpg" alt=""> <br> 
+	 						 	<img src="../../images/004.jpg" alt=""> <br> <img src="../../images/005.jpg" alt=""> <br> <img src="../../images/006.jpg" alt=""> <br>
+--> 						 	
+
+{article_content}
+
+
+
+
+<!-- 这里是图片列表 --->				 	
+	 						 </p> 
+	 						</div> 
+	 					</article> 
+</div> 
+
+<div class="col-md-4 mt20"> 
+	<div class="post-img"> 
+		<img width="600" src="{article_author}/{article_title}/000.jpg" alt="{article_title}"> </div>
+		 <div class="mt10 recent"> <h2>Recent articles</h2>
+		 	 <ul> 
+		 	 	<li> 
+		 	<p><FONT color=#000000>当前位置：</font><a href=../../><FONT color=#BCB6A0>首页</font></a> <FONT color=#BCB6A0>&gt;&gt;</font> {locality} <FONT color=#BCB6A0>&gt;&gt;</font> {article_title}</TD></p>
+		 	 </li> 
+		 	 <li> 
+		 	 	<p>文章作者:{article_author} &nbsp;&nbsp;内容来源:{article_source} &nbsp;&nbsp;发表时间:{article_addtime}&nbsp;&nbsp;文章类别:{article_sortname}></p> 
+		 	 	</li> 
+		 	 	 </ul> 
+		 	 	 </div> 
+		 	 	 
+<div class="mt10"> 
+	<div class="fb-page" data-href="https://www.facebook.com/webjeda/" data-width="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/webjeda/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/webjeda/">webjeda</a></blockquote>
+		</div> 
+</div> <br> </div> </div> 
+
+ <footer class=" mt-4 mt-md-5"> 
+ 	<div class="container"> 
+ 		<div class="row p20"> 
+ 			<div class="col-md-4 text-center mt25">All rights reserved by <a target="_blank" href="http://blog.webjeda.com/">webjeda</a></div> 
+ 			<div class="col-md-4 text-center mt25"> <a target="_blank" href="http://webjeda.com/"><img src="../../images/Built-by-webjeda-blue.png" alt="webjeda"></a> </div> 
+ 			</div>
+ 	 </div> 
+ 	</div> 
+ </footer> 
+ 
+
+
+</body>
+</html>

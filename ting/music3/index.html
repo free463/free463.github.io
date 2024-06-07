@@ -1,0 +1,345 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS渐变边框MP3播放器代码 - 站长素材</title>
+
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+
+</div>
+
+
+<div class="container" style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;">
+  <div id="glow" class="glow disable-animation">
+    <div id="player">
+      <span class="text">音频播放</span>
+      <br>
+      <span id="songName" class="text">歌名部分</span>
+      <br>
+      <div class="playback_controls">
+        <button onClick="skip('prev')">
+          <i class="fa fa-fast-backward"></i>
+        </button>
+        <button onClick="playpause()">
+          <i class="fa fa-play"></i><i class="fa fa-pause"></i>
+        </button>
+        <button onClick="stop()">
+          <i class="fa fa-stop"></i>
+        </button>
+        <button onClick="skip('next')">
+          <i class="fa fa-fast-forward"></i>
+        </button>
+      </div>
+      <br>
+      <div id="seekbar">
+        <input type="range" oninput="setPos(this.value)" id="seek" value="0" max="">
+      </div>
+      <br>
+      <div class="volume_controls">
+        <button onClick="mute()">
+          <i id="mute" class="fa fa-volume-up"></i>
+        </button>
+        <input type="range" id="volume" oninput="setVolume(this.value)" min="0" max="1" step="0.01" value="1">
+      </div>
+    </div>
+
+    <div id="playlist" class="hide">
+      <span class="text">播放列表</span>
+      <div class="list-container">
+
+<div id="list" class="scrollbar">
+
+ <div class="list-item"><div class="wrap-text"><span>ALin-给我一个理由忘记</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>ALin-有一种悲伤</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>阿悄-陪我去流浪</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>阿桑-疯了</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>阿桑-寂寞在唱歌</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>阿桑-受了点伤</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>岑宁儿-追光者</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>岑雨桥、萧全-触电(爱的魔力转圈圈)</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>陈冠蒲-就让你走</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>陈冠蒲-太多</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>陈慧娴-千千阙歌</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>陈琳-爱就爱了</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>陈明-等你爱我</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>陈明-我要找到你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>陈瑞-白狐</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>陈淑桦-情关</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>陈伟霆、宝石Gem-野狼Disco</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>成龙、金喜善-无尽的爱</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>大壮-我们不一样</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>戴佩妮-爱疯了</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>戴佩妮-街角的祝福</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>戴佩妮-你要的爱</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>戴佩妮-怎样</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邓紫棋-倒数</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邓紫棋-光年之外</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邓紫棋-你把我灌醉</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邓紫棋-泡沫</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>迪丽热巴、汪苏泷-偏偏</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>付笛声、任静-知心爱人</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>高胜美、左宏元-渡情</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>光良-第一次</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>光良-都是你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>光良-童话</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>韩雪-飘雪</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>韩雪-想起</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>黑豹乐队-无地自容</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>胡夏、郁可唯-知否知否</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>黄小琥-伴</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>黄小琥-没那么简单</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>黄小琥-顺其自然</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>黄小琥-重来</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>火箭少女101-卡路里</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>姜育恒-梅花三弄</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李健-贝加尔湖畔</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李健-当你老了(Live)</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李健-风吹麦浪</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李玟-想你的365天</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李玟-月光爱人</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李沁-小偷</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李荣浩-麻雀</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李荣浩-模特</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李荣浩-年少有为</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李圣杰-痴心绝对</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李圣杰-手放开</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李昕融、樊桐舟、李凯稠-你笑起来真好看</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李宇春-梨花香</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>李宇春-无价之姐</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>梁静茹-爱你不是两三天</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>梁静茹-可惜不是你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>梁静茹-勇气</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林俊杰-江南</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林俊杰-一千年以后</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林俊杰-醉赤壁</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林心如-落花</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林心如-倾听我</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林忆莲-不必在乎我是谁</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林忆莲-伤痕</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林忆莲-至少还有你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林志炫-没离开过</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>林志炫-烟花易冷</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>零点乐队-相信自己</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>刘德华-冰雨</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>刘珂矣-芙蓉雨</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>刘若英-很爱很爱你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>刘若英-后来</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>刘若英-为爱痴狂</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>刘若英-一辈子的孤单</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>卢冠廷-一生所爱</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>罗文、甄妮-铁血丹心</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>满文军-懂你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>梦然-少年</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>莫文蔚-电台情歌</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>莫文蔚-盛夏的果实</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>潘玮柏-不得不爱</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>潘玮柏-快乐崇拜</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>潘越云-天天天蓝</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>潘越云-我是不是你最疼爱的人</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>齐秦-不让我的眼泪陪我过夜</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>齐秦-大约在冬季</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>齐秦-往事随风</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>齐秦-无情的雨无情的你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>齐秦-夜夜夜夜</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>齐豫-橄榄树</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邱永传-十一年</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>裘海正-爱我的人和我爱的人</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>裘海正-九千九百九十九滴眼泪</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>任贤齐-小雪</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>任贤齐-心太软</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>容祖儿-小小</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>沙宝亮-暗香</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>沙宝亮-斑马斑马</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>苏芮-牵手</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>孙燕姿-天黑黑</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>孙燕姿-我要的幸福</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>孙燕姿-遇见</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>孙燕姿-原来你什么都不要</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>孙悦-心情不错</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邰正宵、孙悦-好人好梦</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邰正宵-九百九十九朵玫瑰</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邰正宵-千纸鹤</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邰正宵-心要让你听见</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邰正宵-一千零一夜</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>邰正宵-找一个字代替</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>田馥甄-小幸运</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>汪峰-北京北京</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>汪峰-存在</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>汪峰-怒放的生命</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>汪正正-超越梦想</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>汪正正-重头再来</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王菲-传奇</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王杰-伤心1999</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王杰-忘记你不如忘记自己</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王杰-忘了你忘了我</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王杰-为了爱梦一生</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王杰-一场游戏一场梦</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王杰-一无所有</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王力宏-爱的就是你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王力宏-唯一</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>王铮亮-时间都去哪儿了</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>萧煌奇-偷走</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>萧亚轩-Cappuccino</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>萧亚轩-HoneyHoneyHoney</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>萧亚轩-窗外的天气</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>萧亚轩-突然想起你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>萧亚轩-我爱你那么多</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>萧亚轩-一个人的精彩</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>萧亚轩-最熟悉的陌生人</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>小潘潘、小峰峰-学猫叫</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>辛晓琪-味道</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>信乐团-海阔天空</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>信乐团-假如</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>信乐团-离歌</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>信乐团-死了都要爱</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>徐佳莹-突然好想你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许慧欣-七月七日晴</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许佳慧-预谋</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许美静-荡漾</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许美静-都是夜归人</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许美静-快乐无罪</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许美静-蔓延</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许美静-迷乱</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许美静-迫在眉梢</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许美静-铁窗</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许美静-阳光总在风雨后</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许美静-遗憾</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许茹芸-独角戏</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许茹芸-泪海</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许茹芸-日光机场</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许茹芸-如果云知道</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许茹芸-一直是晴天</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许韶洋-花香</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许韶洋-幸福的瞬间</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>许巍-曾经的你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>薛之谦-暧昧</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>薛之谦-丑八怪</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>薛之谦-你还要我怎样</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>薛之谦-演员</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>严艺丹-三寸天堂</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>杨宗纬 张碧晨-凉凉</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>叶丽仪-上海滩</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>叶倩文、林子祥-选择</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>叶倩文-真心真意过一生</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>于文文-体面</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>俞静-红豆红</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>羽·泉-感觉不到你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>羽·泉-冷酷到底</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>羽·泉-深呼吸</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>羽·泉-最美</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>庾澄庆-情非得已</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>郁可唯-时间煮雨</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>郁可唯-思慕</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>袁娅维-说散就散</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张碧晨-年轮</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张惠妹-剪爱</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张惠妹-哭不出来</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张惠妹-听海</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张惠妹-站在高岗上</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张靓颖-画心</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张韶涵-呐喊</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张韶涵-欧若拉</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张韶涵-隐形的翅膀</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张韶涵-寓言</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张卫健-孤独不苦</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张卫健-虚虚实实</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张卫健-一辈子一场梦</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲、范文芳-别让情两难</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲、刘嘉玲-有一点动心</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-爱不留</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-爱就一个字</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-爱如潮水</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-别怕我伤心</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-不要对他说</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-从开始到现在</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-过火</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-宽容</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-某某某</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-难以抗拒你容颜</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-太想爱你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-信仰</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-用情</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张信哲-直觉</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张学友-当我想起你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张学友-分手总要在雨天</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张学友-情书</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张学友-秋意浓</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张学友-吻别</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张学友-心如刀割</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张学友-一千个伤心的理由</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张宇-一言难尽</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张宇-雨一直下</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张雨生-大海</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>张云雷-探清水河</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>赵方婧-闭月</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>赵方婧-尽头</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>赵方婧-芒种</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>赵方婧-青灯</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>赵方婧-瑞鹤仙</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>赵方婧-小暑</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>赵方婧-直觉</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>赵雷-成都</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>赵露思-时光话</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周笔畅-笔记</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周传雄-黄昏</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周华健-风雨无阻</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周华健-难念的经</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周蕙-不想让你知道</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周蕙-风铃</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周蕙-好想好好爱你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周蕙-没有你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周蕙-我看</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周蕙-相遇太早</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周蕙-约定</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周杰伦-稻香</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周杰伦-告白气球</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周杰伦-菊花台</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周杰伦-青花瓷</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-触不可及</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-此生惟你</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-大鱼</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-欢颜</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-年轮(Live)</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-水形物语</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-微光海洋</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-雪落下的声音(Live)</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-与卿</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周深-愿得一心人</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>周迅-飘摇</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>庄心妍、祁隆-一万个舍不得</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>庄心妍-爱囚</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>庄心妍-以后的以后</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>庄心妍-再见只是陌生人</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+ <div class="list-item"><div class="wrap-text"><span>庄心妍-走着走着就散了</span></div><button onClick="skip('next')"><i class="fa fa-fast-forward"></i></button></div>
+
+
+
+	
+</div>
+
+        <div class="add-list">
+          <input id="sourceUrl" type="text" placeholder="输入音乐播放地址" />
+          <button onClick="addList()">+</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="playlist-btn">
+      <button onClick="togglePlaylist()">
+        <i id="playlist-btn" class="fa fa-list"></i>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>

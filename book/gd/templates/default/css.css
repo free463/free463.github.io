@@ -1,0 +1,93 @@
+BODY {
+	SCROLLBAR-FACE-COLOR: #f6f6f6; FONT-SIZE: 12px; BACKGROUND: url(images/bg.gif) center 50%; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #cccccc; COLOR: #333333; SCROLLBAR-3DLIGHT-COLOR: #cccccc; SCROLLBAR-ARROW-COLOR: #330000; SCROLLBAR-TRACK-COLOR: #f6f6f6; FONT-FAMILY: "宋体"; SCROLLBAR-DARKSHADOW-COLOR: #ffffff
+}
+A {
+	COLOR: #333333; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+INPUT {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: #c0c0c0; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #c0c0c0; PADDING-BOTTOM: 1px; CURSOR: hand; BORDER-TOP-COLOR: #c0c0c0; PADDING-TOP: 1px; FONT-FAMILY: "宋体"; HEIGHT: 18px; BACKGROUND-COLOR: #ffffff; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #c0c0c0
+}
+TEXTAREA {
+	BORDER-TOP-WIDTH: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: #c0c0c0; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #c0c0c0; CURSOR: hand; BORDER-TOP-COLOR: #c0c0c0; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #c0c0c0
+}
+SELECT {
+	BORDER-TOP-WIDTH: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: #c0c0c0; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #c0c0c0; CURSOR: hand; BORDER-TOP-COLOR: #c0c0c0; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #c0c0c0
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 18px
+}
+.head {
+	PADDING-LEFT: 35px; FONT-SIZE: 12px; BACKGROUND: url(images/head.gif); COLOR: #000000
+}
+.head A {
+	COLOR: #000000
+}
+.head A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+.table1 {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 0px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 0px solid
+}
+.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: blue
+}
+.pg {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 18px
+}
+.top {
+	FONT-WEIGHT: bold; COLOR: #333333; PADDING-TOP: 2px
+}
+.top A {
+	COLOR: #333333
+}
+.top A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.menuskin {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: 0px; BACKGROUND: url(images/menubg.gif) #ffffff; VISIBILITY: hidden; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; POSITION: absolute
+}
+.menuskin A {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 30px; TEXT-DECORATION: none
+}
+#mouseoverstyle {
+	BORDER-RIGHT: #fefefe 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #fefefe 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 2px; BORDER-LEFT: #fefefe 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #fefefe 1px solid; BACKGROUND-COLOR: #fefefe
+}
+#mouseoverstyle A {
+	
+}
+.menuitems {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; MARGIN: 2px; WORD-BREAK: keep-all; LINE-HEIGHT: 18px; PADDING-TOP: 1px
+}
+.fontblue {
+	COLOR: #333333
+}
+.fontwhite {
+	COLOR: #000000
+}
+.fontwhite A {
+	COLOR: #000000
+}
+.fontwhite A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.td1 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 8px
+}
+.td2 {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 8px; PADDING-TOP: 3px
+}
+.marquee {
+	
+}
+.marquee A {
+	
+}
+.bg_one {
+	PADDING-LEFT: 5px; BACKGROUND: #fafafa
+}
+.bg_two {
+	PADDING-LEFT: 5px; BACKGROUND: #ffffff
+}

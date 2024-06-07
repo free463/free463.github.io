@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>听松阁-HTML5列表式音乐播放器SMusic</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+{title:'001.清净',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/001.清净.mp3'},
+{title:'002.往生',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/002.往生.mp3'},
+{title:'003.无私',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/003.无私.mp3'},
+{title:'004.如来云水月',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/004.如来云水月.mp3'},
+{title:'005.绿财神心咒',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/005.绿财神心咒.mp3'},
+{title:'006.寻找生命中贵人',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/006.寻找生命中贵人.mp3'},
+{title:'007.汉地雪莲',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/007.汉地雪莲.mp3'},
+{title:'008.南无观世音菩萨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/008.南无观世音菩萨.mp3'},
+{title:'009.教我如何不想',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/009.教我如何不想.mp3'},
+{title:'010.飞天吉祥',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/010.飞天吉祥.mp3'},
+{title:'011.雨扬心经',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/011.雨扬心经.mp3'},
+{title:'012.莲花上水滴',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/012.莲花上水滴.mp3'},
+{title:'013.耀一心经',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/013.耀一心经.mp3'},
+{title:'014.陈慧阑心经',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/014.陈慧阑心经.mp3'},
+{title:'015.忏悔文',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/015.忏悔文.mp3'},
+{title:'016.随缘随佛',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/016.随缘随佛.mp3'},
+{title:'017.变蝴蝶 莲歌',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/017.变蝴蝶 莲歌.mp3'},
+{title:'018.佛音缭绕大乘',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/018.佛音缭绕大乘.mp3'},
+{title:'019.暗影佛音',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/019.暗影佛音.mp3'},
+{title:'020.劝世',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/020.劝世.mp3'},
+{title:'021.禅院钟声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/021.禅院钟声.mp3'},
+{title:'022.灵感歌',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/022.灵感歌.mp3'},
+{title:'023.莲花净土-奕睆',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/023.莲花净土-奕睆.mp3'},
+{title:'024.释迦牟尼佛心咒',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/024.释迦牟尼佛心咒.mp3'},
+{title:'025.禅是一枝花',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/025.禅是一枝花.mp3'},
+{title:'026.佛光照着你',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/026.佛光照着你.mp3'},
+{title:'027.佛在灵山莫远求',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/027.佛在灵山莫远求.mp3'},
+{title:'028.一声佛号送上岸',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/028.一声佛号送上岸.mp3'},
+{title:'029.礼赞释迦牟尼',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/佛音静听/029.礼赞释迦牟尼.mp3'}
+
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://free163.com/" target="_blank">听松阁</a></p>
+</div>
+</body>
+</html>

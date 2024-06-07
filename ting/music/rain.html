@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>听松阁-HTML5列表式音乐播放器SMusic</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+{title:'001.助眠雷雨声-雨滴拍打声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/001.助眠雷雨声-雨滴拍打声.mp3'},
+{title:'002.助眠雷雨声 90分钟加长版 雨一直下',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/002.助眠雷雨声 90分钟加长版 雨一直下.mp3'},
+{title:'003.助眠雷雨声 持续雨声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/003.助眠雷雨声 持续雨声.mp3'},
+{title:'004.助眠雷雨声 丛林雨声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/004.助眠雷雨声 丛林雨声.mp3'},
+{title:'005.助眠雷雨声-雷雨声声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/005.助眠雷雨声-雷雨声声.mp3'},
+{title:'006.助眠雷雨声-林中雨风',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/006.助眠雷雨声-林中雨风.mp3'},
+{title:'007.助眠雷雨声-又下雨了',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/007.助眠雷雨声-又下雨了.mp3'},
+{title:'008.助眠雷雨声_山雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/008.助眠雷雨声_山雨.mp3'},
+{title:'009.助眠雷雨声_森林之雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/009.助眠雷雨声_森林之雨.mp3'},
+{title:'010.助眠雷雨声-30分钟 雨一直下 2',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/010.助眠雷雨声-30分钟 雨一直下 2.mp3'},
+{title:'011.助眠雷雨声_30分钟版 雨一直下',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/011.助眠雷雨声_30分钟版 雨一直下.mp3'},
+{title:'012.助眠雷雨声-平静的雨 35',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/012.助眠雷雨声-平静的雨 35.mp3'},
+{title:'013.助眠雷雨声_平静的雨 33',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/013.助眠雷雨声_平静的雨 33.mp3'},
+{title:'014.助眠雷雨声_平静的雨 32',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/014.助眠雷雨声_平静的雨 32.mp3'},
+{title:'015.助眠雷雨声-平静的雨 31',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/015.助眠雷雨声-平静的雨 31.mp3'},
+{title:'016.助眠雷雨声-平静的雨 30',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/016.助眠雷雨声-平静的雨 30.mp3'},
+{title:'017.助眠雷雨声-平静的雨 29',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/017.助眠雷雨声-平静的雨 29.mp3'},
+{title:'018.助眠雷雨声-平静的雨 28',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/018.助眠雷雨声-平静的雨 28.mp3'},
+{title:'019.助眠雷雨声-平静的雨 27',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/019.助眠雷雨声-平静的雨 27.mp3'},
+{title:'020.助眠雷雨声-平静的雨 26',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/020.助眠雷雨声-平静的雨 26.mp3'},
+{title:'021.助眠雷雨声-平静的雨 25',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/021.助眠雷雨声-平静的雨 25.mp3'},
+{title:'022.助眠雷雨声-平静的雨 24',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/022.助眠雷雨声-平静的雨 24.mp3'},
+{title:'023.助眠雷雨声-平静的雨 23',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/023.助眠雷雨声-平静的雨 23.mp3'},
+{title:'024.助眠雷雨声-平静的雨 22',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/024.助眠雷雨声-平静的雨 22.mp3'},
+{title:'025.助眠雷雨声-平静的雨 21',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/025.助眠雷雨声-平静的雨 21.mp3'},
+{title:'026.助眠雷雨声-平静的雨 20',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/026.助眠雷雨声-平静的雨 20.mp3'},
+{title:'027.助眠雷雨声-平静的雨 19',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/027.助眠雷雨声-平静的雨 19.mp3'},
+{title:'028.助眠雷雨声-平静的雨 18',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/028.助眠雷雨声-平静的雨 18.mp3'},
+{title:'029.助眠雷雨声-平静的雨 17',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/029.助眠雷雨声-平静的雨 17.mp3'},
+{title:'030.助眠雷雨声-平静的雨 16',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/030.助眠雷雨声-平静的雨 16.mp3'},
+{title:'031.助眠雷雨声-平静的雨 15',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/031.助眠雷雨声-平静的雨 15.mp3'},
+{title:'032.助眠雷雨声-平静的雨 14',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/032.助眠雷雨声-平静的雨 14.mp3'},
+{title:'033.助眠雷雨声-平静的雨 13',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/033.助眠雷雨声-平静的雨 13.mp3'},
+{title:'034.助眠雷雨声-平静的雨 12',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/034.助眠雷雨声-平静的雨 12.mp3'},
+{title:'035.助眠雷雨声-平静的雨 11',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/035.助眠雷雨声-平静的雨 11.mp3'},
+{title:'036.助眠雷雨声-平静的雨 7',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/036.助眠雷雨声-平静的雨 7.mp3'},
+{title:'037.助眠雷雨声-平静的雨 9',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/037.助眠雷雨声-平静的雨 9.mp3'},
+{title:'038.助眠雷雨声-平静的雨 8',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/038.助眠雷雨声-平静的雨 8.mp3'},
+{title:'039.助眠雷雨声-平静的雨 6',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/039.助眠雷雨声-平静的雨 6.mp3'},
+{title:'040.助眠雷雨声-梦幻风暴 2',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/040.助眠雷雨声-梦幻风暴 2.mp3'},
+{title:'041.助眠雷雨声-梦幻风暴',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/041.助眠雷雨声-梦幻风暴.mp3'},
+{title:'042.助眠雷雨声-猛烈的雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/042.助眠雷雨声-猛烈的雨.mp3'},
+{title:'043.助眠雷雨声-山中之雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/043.助眠雷雨声-山中之雨.mp3'},
+{title:'044.助眠雷雨声-平静的雨声 5',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/044.助眠雷雨声-平静的雨声 5.mp3'},
+{title:'045.助眠雷雨声-平静的雨声 4',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/045.助眠雷雨声-平静的雨声 4.mp3'},
+{title:'046.助眠雷雨声-平静的雨声 3',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/046.助眠雷雨声-平静的雨声 3.mp3'},
+{title:'047.助眠雷雨声-都市雨声 大雨闷雷',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/047.助眠雷雨声-都市雨声 大雨闷雷.mp3'},
+{title:'048.助眠雷雨声-西雅图雨声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/048.助眠雷雨声-西雅图雨声.mp3'},
+{title:'049.助眠雷雨声-森林大雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/049.助眠雷雨声-森林大雨.mp3'},
+{title:'050.催眠雷雨声-安静的雨 无雷',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/050.催眠雷雨声-安静的雨 无雷.mp3'},
+{title:'051.催眠雷雨声-大雨无雷声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/051.催眠雷雨声-大雨无雷声.mp3'},
+{title:'052.助眠雷雨声-下雨天',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/052.助眠雷雨声-下雨天.mp3'},
+{title:'053.助眠雷雨声-雷雨大雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/053.助眠雷雨声-雷雨大雨.mp3'},
+{title:'054.助眠雷雨声-暴雨与雷',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/054.助眠雷雨声-暴雨与雷.mp3'},
+{title:'055.助眠雷雨声-大雨声和温柔的雷声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/055.助眠雷雨声-大雨声和温柔的雷声.mp3'},
+{title:'056.助眠雷雨声-雨声雨滴声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/056.助眠雷雨声-雨声雨滴声.mp3'},
+{title:'057.助眠雷雨声-雷雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/057.助眠雷雨声-雷雨.mp3'},
+{title:'058.助眠雷雨声-10 Hz阿尔法 雷雨 超长版',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/058.助眠雷雨声-10 Hz阿尔法 雷雨 超长版.mp3'},
+{title:'059.助眠雷雨声-暴雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/059.助眠雷雨声-暴雨.mp3'},
+{title:'060.助眠雷雨声-大雨和雷',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/060.助眠雷雨声-大雨和雷.mp3'},
+{title:'061.助眠雷雨声-平静的雨声 02',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/061.助眠雷雨声-平静的雨声 02.mp3'},
+{title:'062.助眠雷雨声-平静的雨声 01',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/062.助眠雷雨声-平静的雨声 01.mp3'},
+{title:'063.大自然雨声-稍纵即逝的雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/063.大自然雨声-稍纵即逝的雨.mp3'},
+{title:'064.纯雨声-日本富士山',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/064.纯雨声-日本富士山.mp3'},
+{title:'065.雨声伴随着鸟儿的合唱',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/065.雨声伴随着鸟儿的合唱.mp3'},
+{title:'066.花园里的倾盆大雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/066.花园里的倾盆大雨.mp3'},
+{title:'067.细雨雨滴声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/067.细雨雨滴声.mp3'},
+{title:'068.雷雨声飞过的瀑布',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/068.雷雨声飞过的瀑布.mp3'},
+{title:'069.倾盆大雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/069.倾盆大雨.mp3'},
+{title:'070.季风天气',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/070.季风天气.mp3'},
+{title:'071.雷雨中的叮叮声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/071.雷雨中的叮叮声.mp3'},
+{title:'072.低沉的雨声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/072.低沉的雨声.mp3'},
+{title:'073.自然水声-岩石海岸上的湖波',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/073.自然水声-岩石海岸上的湖波.mp3'},
+{title:'074.自然海浪声-月光海浪',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/074.自然海浪声-月光海浪.mp3'},
+{title:'075.自然水声-安静的小溪',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/075.自然水声-安静的小溪.mp3'},
+{title:'076.自然下雨声-大风和雨滴声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/076.自然下雨声-大风和雨滴声.mp3'},
+{title:'077.自然海浪声-冲进海湾',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/077.自然海浪声-冲进海湾.mp3'},
+{title:'078.自然海浪声-岩石边的海浪声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/078.自然海浪声-岩石边的海浪声.mp3'},
+{title:'079.自然海浪声-潮水退去',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/079.自然海浪声-潮水退去.mp3'},
+{title:'080.自然下雨声-沉睡的雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/080.自然下雨声-沉睡的雨.mp3'},
+{title:'081.自然雨声-转瞬即逝的暴雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/081.自然雨声-转瞬即逝的暴雨.mp3'},
+{title:'082.自然下雨声-二月的雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/082.自然下雨声-二月的雨.mp3'},
+{title:'083.大自然下雨声-一路观雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/083.大自然下雨声-一路观雨.mp3'},
+{title:'084.自然下雨声-早餐时间雨声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/084.自然下雨声-早餐时间雨声.mp3'},
+{title:'085.自然下雨声-雨中冥想',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/085.自然下雨声-雨中冥想.mp3'},
+{title:'086.大自然声音-冰雹声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/086.大自然声音-冰雹声.mp3'},
+{title:'087.自然下雨声-大风和雨声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/087.自然下雨声-大风和雨声.mp3'},
+{title:'088.自然下雨声-清晨的细雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/088.自然下雨声-清晨的细雨.mp3'},
+{title:'089.自然下雨声-深夜的雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/089.自然下雨声-深夜的雨.mp3'},
+{title:'090.自然下雨声-窗边雨声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/090.自然下雨声-窗边雨声.mp3'},
+{title:'091.自然下雨声-水边大雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/091.自然下雨声-水边大雨.mp3'},
+{title:'092.自然下雨声-明亮的夏季风 清脆的雨滴声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/092.自然下雨声-明亮的夏季风 清脆的雨滴声.mp3'},
+{title:'093.自然下雨声-三月野营雨声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/093.自然下雨声-三月野营雨声.mp3'},
+{title:'094.自然下雨声_倾盆大雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/094.自然下雨声_倾盆大雨.mp3'},
+{title:'095.大自然下雨声-细雨绵绵',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/095.大自然下雨声-细雨绵绵.mp3'},
+{title:'096.大自然下雨声-淅沥沥的小雨和雨滴声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/096.大自然下雨声-淅沥沥的小雨和雨滴声.mp3'},
+{title:'097.大自然下雨声-暴雨声雨水敲打声 无雷',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/097.大自然下雨声-暴雨声雨水敲打声 无雷.mp3'},
+{title:'098.大自然下雨声-10hz阿尔法 大雨声 无雷声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/098.大自然下雨声-10hz阿尔法 大雨声 无雷声.mp3'},
+{title:'099.大自然下雨声-中雨声 无雷声 无鸟叫声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/099.大自然下雨声-中雨声 无雷声 无鸟叫声.mp3'},
+{title:'100.自然下雨声-令人放松的雨声',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/100.自然下雨声-令人放松的雨声.mp3'},
+{title:'101.自然雨声-雨中森林',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/101.自然雨声-雨中森林.mp3'},
+{title:'102.助眠雷雨声-平静的雨 7',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/102.助眠雷雨声-平静的雨 7.mp3'},
+{title:'103.助眠雷雨声-平静的雨 10',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/深度睡眠下雨声/103.助眠雷雨声-平静的雨 10.mp3'}
+
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://free163.com/" target="_blank">听松阁</a></p>
+</div>
+</body>
+</html>

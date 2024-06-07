@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>听松阁-HTML5列表式音乐播放器SMusic</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+{title:'001.雪 【还有多少听友与我一起感受宁静】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/001.雪 【还有多少听友与我一起感受宁静】.mp3'},
+{title:'002.【天边】是否有你想到的地方',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/002.【天边】是否有你想到的地方.mp3'},
+{title:'003.此情可待成追忆，只是当时已惘然。',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/003.此情可待成追忆，只是当时已惘然。.mp3'},
+{title:'004.百人想歌，邀君共赏',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/004.百人想歌，邀君共赏.mp3'},
+{title:'005.苦 雪 烹 茶',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/005.苦 雪 烹 茶.mp3'},
+{title:'006.送君千里，终须一别',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/006.送君千里，终须一别.mp3'},
+{title:'007.似夜流月',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/007.似夜流月.mp3'},
+{title:'008.长安【来吧，江湖儿女】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/008.长安【来吧，江湖儿女】.mp3'},
+{title:'009.二十二桥枫别雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/009.二十二桥枫别雨.mp3'},
+{title:'010.姑苏城外【什么样的音乐才能真正打动您】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/010.姑苏城外【什么样的音乐才能真正打动您】.mp3'},
+{title:'011.春雪',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/011.春雪.mp3'},
+{title:'012.少年游',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/012.少年游.mp3'},
+{title:'013.摇曳の川流【晚安，好梦~】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/013.摇曳の川流【晚安，好梦~】.mp3'},
+{title:'014.滋兰【院前留寸空地，浇水种花~】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/014.滋兰【院前留寸空地，浇水种花~】.mp3'},
+{title:'015.春色小径【和大自然来个约会~~】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/015.春色小径【和大自然来个约会~~】.mp3'},
+{title:'016.风高云淡',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/016.风高云淡.mp3'},
+{title:'017.如梦【人生苦短，冷暖自知】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/017.如梦【人生苦短，冷暖自知】.mp3'},
+{title:'018.风情月思',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/018.风情月思.mp3'},
+{title:'019.湖光水面',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/019.湖光水面.mp3'},
+{title:'020.人生若只如【初见】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/020.人生若只如【初见】.mp3'},
+{title:'021.晨曦【拥抱一缕清晨的阳光】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/021.晨曦【拥抱一缕清晨的阳光】.mp3'},
+{title:'022.定情',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/022.定情.mp3'},
+{title:'023.与君同醉',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/023.与君同醉.mp3'},
+{title:'024.灯火阑珊',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/024.灯火阑珊.mp3'},
+{title:'025.辞旧迎新【祝大家新年快乐，万事如意】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/025.辞旧迎新【祝大家新年快乐，万事如意】.mp3'},
+{title:'026.红颜依旧',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/026.红颜依旧.mp3'},
+{title:'027.只为伊人【8分钟听觉盛宴，您有耐心听完吗】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/027.只为伊人【8分钟听觉盛宴，您有耐心听完吗】.mp3'},
+{title:'028.眷眷柔情',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/028.眷眷柔情.mp3'},
+{title:'029.天幕之下',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/029.天幕之下.mp3'},
+{title:'030.尘封',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/030.尘封.mp3'},
+{title:'031.风和日丽【音乐寄托了我对大家的祝愿，你们感受到了吗】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/031.风和日丽【音乐寄托了我对大家的祝愿，你们感受到了吗】.mp3'},
+{title:'032.瑶台月下',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/032.瑶台月下.mp3'},
+{title:'033.江湖【重口味来袭，小清新回避】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/033.江湖【重口味来袭，小清新回避】.mp3'},
+{title:'034.江南风光【心情烦闷的过来洗洗耳朵】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/034.江南风光【心情烦闷的过来洗洗耳朵】.mp3'},
+{title:'035.寒空【喜欢就来留下您的评论吧】',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/035.寒空【喜欢就来留下您的评论吧】.mp3'},
+{title:'036.夏之影',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/036.夏之影.mp3'},
+{title:'037.海上碧波',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/037.海上碧波.mp3'},
+{title:'038.海誓山盟',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/038.海誓山盟.mp3'},
+{title:'039.绿水行舟',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/039.绿水行舟.mp3'},
+{title:'040.泪眼问花花不语,乱红飞过秋千去',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/040.泪眼问花花不语,乱红飞过秋千去.mp3'},
+{title:'041.一往情深',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/041.一往情深.mp3'},
+{title:'042.流水浮灯',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/042.流水浮灯.mp3'},
+{title:'043.天地之音',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/043.天地之音.mp3'},
+{title:'044.玉水明砂',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/044.玉水明砂.mp3'},
+{title:'045.翩翩白雪',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/045.翩翩白雪.mp3'},
+{title:'046.翠竹负雪',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/046.翠竹负雪.mp3'},
+{title:'047.冷月花魂',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/047.冷月花魂.mp3'},
+{title:'048.长乐未央',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/048.长乐未央.mp3'},
+{title:'049.秋风萧瑟',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/049.秋风萧瑟.mp3'},
+{title:'050.如怨如慕',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/050.如怨如慕.mp3'},
+{title:'051.云淡风轻',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/051.云淡风轻.mp3'},
+{title:'052.望穿秋水',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/052.望穿秋水.mp3'},
+{title:'053.风华正茂',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/053.风华正茂.mp3'},
+{title:'054.沧海云帆',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/054.沧海云帆.mp3'},
+{title:'055.镜花水月',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/055.镜花水月.mp3'},
+{title:'056.举杯邀月',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/056.举杯邀月.mp3'},
+{title:'057.暗香浮动',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/057.暗香浮动.mp3'},
+{title:'058.青青子衿',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/058.青青子衿.mp3'},
+{title:'059.沧溟潇潇',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/059.沧溟潇潇.mp3'},
+{title:'060.笛音袅袅',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/060.笛音袅袅.mp3'},
+{title:'061.竹林深处',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/061.竹林深处.mp3'},
+{title:'062.空山新雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/062.空山新雨.mp3'},
+{title:'063.清泉石上',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/063.清泉石上.mp3'},
+{title:'064.雨中问情',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/064.雨中问情.mp3'},
+{title:'065.鸟鸣山涧',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/大自然古风纯音乐/065.鸟鸣山涧.mp3'}
+
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://free163.com/" target="_blank">听松阁</a></p>
+</div>
+</body>
+</html>

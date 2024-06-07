@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>听松阁-HTML5列表式音乐播放器SMusic</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+{title:'001.采菊东篱下',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/001.采菊东篱下.mp3'},
+{title:'002.梦中人',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/002.梦中人.mp3'},
+{title:'003.说走就走的旅行',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/003.说走就走的旅行.mp3'},
+{title:'004.一只喵的思考',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/004.一只喵的思考.mp3'},
+{title:'005.朝辞白帝彩云间',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/005.朝辞白帝彩云间.mp3'},
+{title:'006.月亮上的兔子捣年糕',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/006.月亮上的兔子捣年糕.mp3'},
+{title:'007.万花筒',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/007.万花筒.mp3'},
+{title:'008.小荷才露尖尖角',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/008.小荷才露尖尖角.mp3'},
+{title:'009.桃花坞',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/009.桃花坞.mp3'},
+{title:'010.亲爱的，伟大的',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/010.亲爱的，伟大的.mp3'},
+{title:'011.偷玫瑰的人',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/011.偷玫瑰的人.mp3'},
+{title:'012.小雪(24节气钢琴曲）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/012.小雪(24节气钢琴曲）.mp3'},
+{title:'013.原创_凡尔赛文学',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/013.原创_凡尔赛文学.mp3'},
+{title:'014.原创_我们结婚吧',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/014.原创_我们结婚吧.mp3'},
+{title:'015.原创_说走就走的旅行',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/015.原创_说走就走的旅行.mp3'},
+{title:'016.原创_秋天的第一杯奶茶',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/016.原创_秋天的第一杯奶茶.mp3'},
+{title:'017.原创_小王子与玫瑰花',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/017.原创_小王子与玫瑰花.mp3'},
+{title:'018.原创_四季穿行在这个城市',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/018.原创_四季穿行在这个城市.mp3'},
+{title:'019.原创_谷雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/019.原创_谷雨.mp3'},
+{title:'020.原创_月亮上的兔子捣年糕',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/020.原创_月亮上的兔子捣年糕.mp3'},
+{title:'021.原创_念念不忘',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/021.原创_念念不忘.mp3'},
+{title:'022.原创_漫步云端',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/022.原创_漫步云端.mp3'},
+{title:'023.原创_柿子红了',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/023.原创_柿子红了.mp3'},
+{title:'024.原创_驴皮公主（童话异想世界）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/024.原创_驴皮公主（童话异想世界）.mp3'},
+{title:'025.原创_此心安处是吾乡',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/025.原创_此心安处是吾乡.mp3'},
+{title:'026.原创_浮生若梦',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/026.原创_浮生若梦.mp3'},
+{title:'027.原创_愿景',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/027.原创_愿景.mp3'},
+{title:'028.原创_花非花',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/028.原创_花非花.mp3'},
+{title:'029.原创_月亮丢了吗',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/029.原创_月亮丢了吗.mp3'},
+{title:'030.原创_君住长江尾',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/030.原创_君住长江尾.mp3'},
+{title:'031.原创_情不知所起',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/031.原创_情不知所起.mp3'},
+{title:'032.原创_春日目击者',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/032.原创_春日目击者.mp3'},
+{title:'033.原创_倔强而生',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/033.原创_倔强而生.mp3'},
+{title:'034.原创_木兰辞',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/034.原创_木兰辞.mp3'},
+{title:'035.原创_细雨如诉',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/035.原创_细雨如诉.mp3'},
+{title:'036.原创_相遇成诗（婚礼上的钢琴曲）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/036.原创_相遇成诗（婚礼上的钢琴曲）.mp3'},
+{title:'037.原创_rose is a rose',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/037.原创_rose is a rose.mp3'},
+{title:'038.原创_夜莺与玫瑰（香氛与四季的诗歌）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/038.原创_夜莺与玫瑰（香氛与四季的诗歌）.mp3'},
+{title:'039.原创_开满鸢尾花的莫奈花园',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/039.原创_开满鸢尾花的莫奈花园.mp3'},
+{title:'040.原创_特别之日（婚礼钢琴曲）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/040.原创_特别之日（婚礼钢琴曲）.mp3'},
+{title:'041.原创_陪你走过最美的风景（婚礼钢琴曲）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/041.原创_陪你走过最美的风景（婚礼钢琴曲）.mp3'},
+{title:'042.原创_梦的轻舟',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/042.原创_梦的轻舟.mp3'},
+{title:'043.原创_秋日限定（香氛与四季的诗歌）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/043.原创_秋日限定（香氛与四季的诗歌）.mp3'},
+{title:'044.原创_随风摇曳的虞美人（香氛与四季的诗歌）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/044.原创_随风摇曳的虞美人（香氛与四季的诗歌）.mp3'},
+{title:'045.原创_天秤座（星座物语）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/045.原创_天秤座（星座物语）.mp3'},
+{title:'046.原创_随着星光去流浪',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/046.原创_随着星光去流浪.mp3'},
+{title:'047.原创_旋转木马',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/047.原创_旋转木马.mp3'},
+{title:'048.原创_来自月亮的问候',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/048.原创_来自月亮的问候.mp3'},
+{title:'049.原创_半岛小夜曲',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/049.原创_半岛小夜曲.mp3'},
+{title:'050.原创_鹧鸪天·桂花（香氛与四季的诗歌）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/050.原创_鹧鸪天·桂花（香氛与四季的诗歌）.mp3'},
+{title:'051.原创_处女座（星座钢琴曲）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/051.原创_处女座（星座钢琴曲）.mp3'},
+{title:'052.原创_金牛座（星座钢琴曲）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/052.原创_金牛座（星座钢琴曲）.mp3'},
+{title:'053.原创_墙头马上',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/053.原创_墙头马上.mp3'},
+{title:'054.原创_应是绿肥红瘦',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/054.原创_应是绿肥红瘦.mp3'},
+{title:'055.原创_月亮上的秋千',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/055.原创_月亮上的秋千.mp3'},
+{title:'056.原创_桃花岛（指尖上的武侠）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/056.原创_桃花岛（指尖上的武侠）.mp3'},
+{title:'057.原创_十四行情诗（钢琴曲）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/057.原创_十四行情诗（钢琴曲）.mp3'},
+{title:'058.原创_绝情谷（指尖上的武侠）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/058.原创_绝情谷（指尖上的武侠）.mp3'},
+{title:'059.原创_春夜喜雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/059.原创_春夜喜雨.mp3'},
+{title:'060.原创_所有的美好（2019七夕特别作品）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/060.原创_所有的美好（2019七夕特别作品）.mp3'},
+{title:'061.原创_争渡，争渡，惊起一滩鸥鹭',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/061.原创_争渡，争渡，惊起一滩鸥鹭.mp3'},
+{title:'062.原创_谍影往事',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/062.原创_谍影往事.mp3'},
+{title:'063.原创_花容月貌',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/063.原创_花容月貌.mp3'},
+{title:'064.原创_风花雪月',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/064.原创_风花雪月.mp3'},
+{title:'065.原创_幽兰之芯（香氛与四季的诗歌）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/065.原创_幽兰之芯（香氛与四季的诗歌）.mp3'},
+{title:'066.原创_茉莉之夜（香氛与四季的诗歌）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/066.原创_茉莉之夜（香氛与四季的诗歌）.mp3'},
+{title:'067.原创_冰与火的奇境',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/067.原创_冰与火的奇境.mp3'},
+{title:'068.原创_梵高的房间（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/068.原创_梵高的房间（印象梵高）.mp3'},
+{title:'069.原创_海盐（香氛与四季的诗歌）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/069.原创_海盐（香氛与四季的诗歌）.mp3'},
+{title:'070.原创_蓝风铃（香氛与四季的诗歌）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/070.原创_蓝风铃（香氛与四季的诗歌）.mp3'},
+{title:'071.原创_星空下的咖啡馆（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/071.原创_星空下的咖啡馆（印象梵高）.mp3'},
+{title:'072.原创_恋风恋歌',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/072.原创_恋风恋歌.mp3'},
+{title:'073.原创_婚礼上的邂逅',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/073.原创_婚礼上的邂逅.mp3'},
+{title:'074.原创_朝朝暮暮',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/074.原创_朝朝暮暮.mp3'},
+{title:'075.原创_钗头凤（当钢琴遇上诗词）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/075.原创_钗头凤（当钢琴遇上诗词）.mp3'},
+{title:'076.原创_渔歌子·西塞山前白鹭飞（当钢琴遇上诗词）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/076.原创_渔歌子·西塞山前白鹭飞（当钢琴遇上诗词）.mp3'},
+{title:'077.原创_配角',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/077.原创_配角.mp3'},
+{title:'078.原创_鹊桥仙（当钢琴遇上诗词）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/078.原创_鹊桥仙（当钢琴遇上诗词）.mp3'},
+{title:'079.原创_如果月光为你盛开',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/079.原创_如果月光为你盛开.mp3'},
+{title:'080.原创_山地玫瑰',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/080.原创_山地玫瑰.mp3'},
+{title:'081.原创_筑梦师',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/081.原创_筑梦师.mp3'},
+{title:'082.原创_一夜落花雨',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/082.原创_一夜落花雨.mp3'},
+{title:'083.原创_甜美的咬痕',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/083.原创_甜美的咬痕.mp3'},
+{title:'084.原创_玲珑骰子安红豆（当钢琴遇上诗词）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/084.原创_玲珑骰子安红豆（当钢琴遇上诗词）.mp3'},
+{title:'085.原创_怦然心动',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/085.原创_怦然心动.mp3'},
+{title:'086.原创_最美的情话',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/086.原创_最美的情话.mp3'},
+{title:'087.原创_菩萨蛮·小山重叠金明灭（当钢琴遇上诗词）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/087.原创_菩萨蛮·小山重叠金明灭（当钢琴遇上诗词）.mp3'},
+{title:'088.原创_灵犀(当钢琴遇上诗词）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/088.原创_灵犀(当钢琴遇上诗词）.mp3'},
+{title:'089.原创_关于青春的那些忧伤',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/089.原创_关于青春的那些忧伤.mp3'},
+{title:'090.原创_模拟爱情',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/090.原创_模拟爱情.mp3'},
+{title:'091.原创_热爱',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/091.原创_热爱.mp3'},
+{title:'092.原创_青铜时代的爱情',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/092.原创_青铜时代的爱情.mp3'},
+{title:'093.原创_白素贞',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/093.原创_白素贞.mp3'},
+{title:'094.原创_我怎么总是想起你',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/094.原创_我怎么总是想起你.mp3'},
+{title:'095.原创_你是我的小行星',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/095.原创_你是我的小行星.mp3'},
+{title:'096.原创_满天星斗的罗纳河（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/096.原创_满天星斗的罗纳河（印象梵高）.mp3'},
+{title:'097.原创_鸢尾花圆舞曲（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/097.原创_鸢尾花圆舞曲（印象梵高）.mp3'},
+{title:'098.原创_麦田里的丝柏树（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/098.原创_麦田里的丝柏树（印象梵高）.mp3'},
+{title:'099.原创_星空下的咖啡馆（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/099.原创_星空下的咖啡馆（印象梵高）.mp3'},
+{title:'100.原创_星月夜（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/100.原创_星月夜（印象梵高）.mp3'},
+{title:'101.原创_梵高先生（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/101.原创_梵高先生（印象梵高）.mp3'},
+{title:'102.原创_瓶中的贝母花（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/102.原创_瓶中的贝母花（印象梵高）.mp3'},
+{title:'103.原创_梵高先生的粉红桃树（印象梵高）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/103.原创_梵高先生的粉红桃树（印象梵高）.mp3'},
+{title:'104.原创_青玉案 元夕（当诗词遇上钢琴）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/104.原创_青玉案 元夕（当诗词遇上钢琴）.mp3'},
+{title:'105.原创_东篱把酒黄昏后（当诗词遇上钢琴）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/105.原创_东篱把酒黄昏后（当诗词遇上钢琴）.mp3'},
+{title:'106.原创_云中谁寄锦书来（当诗词遇上钢琴）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/106.原创_云中谁寄锦书来（当诗词遇上钢琴）.mp3'},
+{title:'107.原创_单身最久',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/107.原创_单身最久.mp3'},
+{title:'108.原创_比悲伤更悲伤',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/108.原创_比悲伤更悲伤.mp3'},
+{title:'109.原创_只是很爱你',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/109.原创_只是很爱你.mp3'},
+{title:'110.原创_丁香物语',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/110.原创_丁香物语.mp3'},
+{title:'111.原创_月光石',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/111.原创_月光石.mp3'},
+{title:'112.原创_一花一世界',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/112.原创_一花一世界.mp3'},
+{title:'113.原创_小小的想念',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/113.原创_小小的想念.mp3'},
+{title:'114.原创_初恋',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/114.原创_初恋.mp3'},
+{title:'115.原创_橙花（精油家族）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/115.原创_橙花（精油家族）.mp3'},
+{title:'116.原创_对视',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/116.原创_对视.mp3'},
+{title:'117.原创_温暖的小事',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/117.原创_温暖的小事.mp3'},
+{title:'118.原创_窗台上的情书',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/118.原创_窗台上的情书.mp3'},
+{title:'119.原创_月光情书',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/119.原创_月光情书.mp3'},
+{title:'120.原创_忽如一夜春风来',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/120.原创_忽如一夜春风来.mp3'},
+{title:'121.原创_我曾在那个时候想起你',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/121.原创_我曾在那个时候想起你.mp3'},
+{title:'122.原创_逍遥游',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/122.原创_逍遥游.mp3'},
+{title:'123.原创_致亲爱的你',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/123.原创_致亲爱的你.mp3'},
+{title:'124.原创_仲夏夜之星',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/124.原创_仲夏夜之星.mp3'},
+{title:'125.原创_最浪漫的话',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/125.原创_最浪漫的话.mp3'},
+{title:'126.原创_风铃木',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/126.原创_风铃木.mp3'},
+{title:'127.原创_姬玉露（印象多肉）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/127.原创_姬玉露（印象多肉）.mp3'},
+{title:'128.原创_静夜（印象多肉）',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/free163person/音乐视听/喜马拉雅/夜色如水安静放松钢琴曲/128.原创_静夜（印象多肉）.mp3'}
+
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://free163.com/" target="_blank">听松阁</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+/****************************************************************
+ *																*		
+ * 						      代码库							*
+ *                        www.dmaku.com							*
+ *       		  努力创建完善、持续更新插件以及模板			*
+ * 																*
+****************************************************************/
+/*通用样式*/
+body,ul,li,p,h1,h2,h3,h4,h5{
+    margin:0;
+    padding:0;
+    font-size:100%;
+}
+body{
+    font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', SimSun, 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+    font-size: 14px;
+    background: #6f0b02;
+}
+img{
+    border:0;
+}
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.center{
+    width: 1000px;
+    margin: 0 auto 0;
+}
+/*content*/
+.content{
+    position: relative;
+    width: 900px;
+    height: 460px;
+    margin: 40px auto;
+}
+.l-pic-index{
+	/*display:none;*/
+    position: absolute;
+    left: 400px;
+    top: 1px;
+    z-index:2;
+    width:50px;
+    height:600px;
+    background: url("../images/j1.png") no-repeat right 0;
+}
+.r-pic-index{
+	/*display:none;*/
+    position: absolute;
+    right: 400px;
+    top: 0;
+    z-index: 2;
+    width:50px;
+    *width:82px;
+    height:600px;
+    background: url("../images/j4.png") no-repeat left 0;
+}
+.l-bg-index{
+    position: absolute;
+    top: -3px;
+    left: 430px;
+    z-index: 1;
+    width: 25px;
+    height: 596px;
+    background: url("../images/j2.png") right 0 no-repeat;
+}
+.r-bg-index{
+    position: absolute;
+    top:-4px;
+    right: 430px;
+    z-index: 1;
+    width: 25px;
+    height: 596px;
+    background: url("../images/j3.png") 0 0 no-repeat;
+}
+.main-index{
+    display: none;
+    overflow: hidden;
+    zoom:1;
+    position: absolute;
+    z-index: 5;
+    width:530px;
+    height:280px;
+    left:100px;
+    top:90px;
+    color: #2e2e2e;
+}
+.intro-text{
+    margin: 10px 0 0 44px;
+    line-height: 1.8;
+    text-indent: 30px;
+}
