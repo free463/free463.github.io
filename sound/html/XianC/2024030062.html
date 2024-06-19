@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="stylesheet" href="src/css/smusic.css"/>
+<title>琉晶坊</title>
+</head>
+<body bgcolor="#ffffff">
+	
+<div style="position:absolute; width:100%; height:100%; z-index:1; left: 0px; top: 0px;"> 
+<SCRIPT language=JavaScript src="./images/mainnew.js"></SCRIPT>
+</div>
+
+<div style="position:absolute; width:100%; height:100%; z-index:2; left: 0px; top: 0px;"> 
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb"> </div>
+    <div class="m-music-list-wrap"></div>
+</div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+
+ {title:'《WLHJ 01》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 01》XE.mp3'},{title:'《WLHJ 02》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 02》XE.mp3'},{title:'《WLHJ 03》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 03》XE.mp3'},{title:'《WLHJ 04》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 04》XE.mp3'},{title:'《WLHJ 05》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 05》XE.mp3'},{title:'《WLHJ 06》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 06》XE.mp3'},{title:'《WLHJ 07》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 07》XE.mp3'},{title:'《WLHJ 08》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 08》XE.mp3'},{title:'《WLHJ 09》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 09》XE.mp3'},{title:'《WLHJ 10》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 10》XE.mp3'},{title:'《WLHJ 11》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 11》XE.mp3'},{title:'《WLHJ 12》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 12》XE.mp3'},{title:'《WLHJ 13》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 13》XE.mp3'},{title:'《WLHJ 14》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 14》XE.mp3'},{title:'《WLHJ 15》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 15》XE.mp3'},{title:'《WLHJ 16》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 16》XE.mp3'},{title:'《WLHJ 17》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 17》XE.mp3'},{title:'《WLHJ 18》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 18》XE.mp3'},{title:'《WLHJ 19》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 19》XE.mp3'},{title:'《WLHJ 20》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 20》XE.mp3'},{title:'《WLHJ 21》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 21》XE.mp3'},{title:'《WLHJ 22》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 22》XE.mp3'},{title:'《WLHJ 23》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 23》XE.mp3'},{title:'《WLHJ 24》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 24》XE.mp3'},{title:'《WLHJ 25》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 25》XE.mp3'},{title:'《WLHJ 26》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 26》XE.mp3'},{title:'《WLHJ 27》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 27》XE.mp3'},{title:'《WLHJ 28》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 28》XE.mp3'},{title:'《WLHJ 29》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 29》XE.mp3'},{title:'《WLHJ 30》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 30》XE.mp3'},{title:'《WLHJ 31》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 31》XE.mp3'},{title:'《WLHJ 32》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 32》XE.mp3'},{title:'《WLHJ 33》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 33》XE.mp3'},{title:'《WLHJ 34》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 34》XE.mp3'},{title:'《WLHJ 35》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 35》XE.mp3'},{title:'《WLHJ 36》XE',singer:'',cover:'images/Maroon5.jpg',src:'https://pan.11.wf/ampsnju/adult/有声小说/小苮儿有声小说/1长篇/武林花劫/《WLHJ 36》XE.mp3'}
+
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+
+
+
+<div style="text-align:center;margin:550px 0; font:normal 36px/48px 'MicroSoft YaHei';z-index:3;">
+<p><a href="http://113333.xyz/" target="_blank">琉晶坊</a></p>
+</div>
+</body>
+</html>
