@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .image-container img {
+    height: auto;
+    width: 100%;
+  }
+  
+/* 按钮基本样式 */
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.button1 {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+/* 下拉框基本样式 */
+.select-style {
+  width: 200px;  /* 设置宽度 */
+  height: 53px;  /* 设置高度 */
+  padding: 5px;  /* 内边距 */
+  border: 1px solid #ccc;  /* 边框样式 */
+  border-radius: 5px;  /* 边框圆角 */
+  -webkit-appearance: none;  /* 移除默认样式 */
+  -moz-appearance: none;  /* 移除默认样式 */
+  appearance: none;  /* 移除默认样式 */
+  background-color: #4CAF50;  /* 背景颜色 */
+  font-size: 16px;                 /* 设置字体大小 */
+  font-weight: bold;               /* 设置字体粗细 */
+  color: #ffffff;  
+  text-align: center;
+  padding-left: 5px; /* 左侧内边距用于对齐文本 */
+}
+
+/* 网页底部漂浮div样式 */
+.fixed-div {
+  position: fixed; /* 使div定位于屏幕视口的一个固定位置 */
+  left: 0; /* 定位到左边 */
+  top: 0; /* 定位到底部 */
+  width: 100%; /* 设置宽度为100%，使其横跨整个屏幕宽度 */
+  background-color: #fff; /* 背景颜色 */
+  color: white; /* 字体颜色 */
+  padding: 10px; /* 内边距 */
+  text-align: center; /* 文本居中对齐 */
+  z-index: 1000;
+}
+</style>
+<script>
+        // JavaScript函数，用于刷新页面
+        function refreshPage() {
+            location.reload();
+        }
+</script>
+</head>
+<body>
+
+<div class="fixed-div">
+<center>
+<section id="buttons">
+        <button class="button button2" onclick="refreshPage()">点击切换下一张美图</button> 
+        <select id="mySelect" class="select-style">
+		<option value="#">换一个激情套图欣赏</option>
+		<option value="./gold.html">金发美女</option>
+		<option value="./juru.html">巨乳美女</option>
+		<option value="./loudian.html">漏点美女</option>
+		<option value="./loli.html">清纯萝莉</option>
+		<option value="./shima.html">SHIMA摄影</option>
+		<option value="./wangdong.html">大神王动写真</option>
+		<option value="./graphis.html" style="color:white;background-color:blue;">Graphis唯美套图</option>
+		<option value="./metcn.html">METCN人体摄影</option>
+		<option value="./theblackalley.html">TheBlackAlley合集</option>
+		<option value="./j-idol.html">J-Idol套图</option>
+		<option value="./vanilla-h.html">Vanilla-H套图</option>
+		<option value="./litu.html">丽图专辑</option>
+		<option value="./netphoto.html">网络美图</option>
+		</select>
+<script>
+document.getElementById('mySelect').addEventListener('change', function() {
+  var url = this.value;
+  if (url) {
+    window.open(url, '_self');
+  }
+});
+</script>
+    </section>
+</center> 
+</div>
+<br><br><br>
+<div class="image-container">
+  <img src="https://api.rryyz.com/api-xxx/photo-graphis.php" alt="" class="zoom-img">
+</div>
+</body>
+</html>
